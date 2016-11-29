@@ -1,0 +1,47 @@
+#####################################################################
+#
+# COMCAST PROPRIETARY AND CONFIDENTIAL
+# __________________
+#
+#  Copyright 2015 Comcast Cable Communications Management, LLC
+#  All Rights Reserved.
+#
+# NOTICE:  All information contained herein is, and remains the property of Comcast
+# and its suppliers, if any.  The concepts contained herein are proprietary to Comcast
+# and its suppliers and may be covered by U.S. and foreign patents or patents in process,
+# and are protected by trade secret or copyright law.  Dissemination of this information
+# or reproduction of this material is strictly forbidden without prior written permission
+# from Comcast.
+#
+#####################################################################
+
+Overview:
+---------
+
+Librdkloggers is a general purpose logging mechanisam, it is based on MPEOS logging
+It has similar format as that of ocap-ri logs. It uses log4c for formatting and
+support multiple log levels, modules. The log level for each module reads from 
+configuration file debug.ini at startup.
+
+
+Build Instructions:
+-------------------
+* Checking out the rdklogger on host machine.
+ $ svn co https://svn3.teamccp.com/svn/rdk/rdk/components/comcast/rdk_logger/generic/trunk  rdklogger
+
+* Building the rdklogger module
+ $ cd trunk/rdklogger
+ $ ./build.sh
+
+* To Build and Install the rdk logger library, binaries and config files
+ $ ./build.sh install
+
+ Here, libraries are installed under "/mnt/nfs/lib/"
+ And the configuration files installed under "/mnt/nfs/env/" on target
+
+* To build Test
+ $ make test
+
+* To create the doxygen document
+ $ make doc
+ RDK logger documents in html format generated under "doc/html" folder
