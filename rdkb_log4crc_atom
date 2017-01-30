@@ -69,7 +69,9 @@
     <rollingpolicy name="XSMART_rollingpolicy" type="sizewin" maxsize="2097152" maxnum="2"/>
     <rollingpolicy name="TOUCHSTONE_rollingpolicy" type="sizewin" maxsize="2097152" maxnum="2"/>
     <rollingpolicy name="WEBPA_rollingpolicy" type="sizewin" maxsize="2097152" maxnum="2"/>
-    
+    <rollingpolicy name="MESH_rollingpolicy" type="sizewin" maxsize="2097152" maxnum="2"/>
+        
+
  <!--   <appender name="stderr" type="stream_env" layout="dated"/>
     <appender name="syslog" type="syslog" layout="basic"/>
     <appender name="socket" type="socket_env" layout="basic"/> -->
@@ -81,6 +83,7 @@
     <appender name="RI_XSMARTrollingfileappender" type="rollingfile" logdir="/rdklogs/logs/" prefix="XsmartLog.txt" layout="comcast_dated" rollingpolicy="XSMART_rollingpolicy"/>
     <appender name="RI_TOUCHSTONErollingfileappender" type="rollingfile" logdir="/rdklogs/logs/" prefix="TouchstoneLog.txt" layout="comcast_dated" rollingpolicy="TOUCHSTONE_rollingpolicy"/>
     <appender name="RI_WEBPArollingfileappender" type="rollingfile" logdir="/rdklogs/logs/" prefix="WEBPAlog.txt" layout="comcast_dated" rollingpolicy="WEBPA_rollingpolicy"/>
+    <appender name="RI_MESHrollingfileappender" type="rollingfile" logdir="/rdklogs/logs/" prefix="MeshAgentLog.txt" layout="comcast_dated" rollingpolicy="MESH_rollingpolicy"/>
 
    <!-- <appender name="stdout" type="stream_env" layout="comcast_dated"/> -->
 
@@ -126,6 +129,7 @@
 	<category name="RI.XSMART" priority="debug" appender="RI_XSMARTrollingfileappender"/> 
 	<category name="RI.TOUCHSTONE" priority="debug" appender="RI_TOUCHSTONErollingfileappender"/> 
 	<category name="RI.WEBPA" priority="debug" appender="RI_WEBPArollingfileappender"/>
+	<category name="RI.MESH" priority="debug" appender="RI_MESHrollingfileappender"/> 
 
     <!--  
         Logging categories available to the Platform are listed below
@@ -162,4 +166,7 @@
     
     <category name="RI.Stack.WEBPA" priority="debug" appender="RI_WEBPArollingfileappender"/>
     <category name="RI.Stack.LOG.RDK.WEBPA" priority="debug" appender="RI_WEBPArollingfileappender"/>
+
+    <category name="RI.Stack.MESH" priority="debug" appender="RI_MESHrollingfileappender"/>
+    <category name="RI.Stack.LOG.RDK.MESH" priority="debug" appender="RI_MESHrollingfileappender"/>
 </log4c>
