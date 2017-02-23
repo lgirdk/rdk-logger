@@ -53,6 +53,8 @@ dnl checks for dependencies
 dnl **********************************
 SYSTEMD_CFLAGS=" "
 SYSTEMD_LDFLAGS=" "
+SYSLOG_HELPER_CFLAGS=" "
+SYSLOG_HELPER_LDFLAGS=" "
 UTILS=""
 AC_ARG_ENABLE([dynamic],
         AS_HELP_STRING([--enable-dynamic],[enable dynamic (default is no)]),
@@ -80,8 +82,22 @@ AC_ARG_ENABLE([journal],
                 ],
         [echo "journal logging  is disable"])
 
+AC_ARG_ENABLE([systemd-syslog-helper],
+        AS_HELP_STRING([--enable-systemd-syslog-helper],[enable systemd syslog logging]),
+        [
+                case "${enableval}" in
+                yes) SYSLOG_HELPER_CFLAGS="-DSYSTEMD_SYSLOG_HELPER"
+                     SYSLOG_HELPER_LDFLAGS="-lsysloghelper" ;;
+                no) AC_MSG_ERROR([systemd syslog logging  is disabled]) ;;
+                *) AC_MSG_ERROR([bad value ${enableval} for --enable-systemd-syslog-helper ]) ;;
+                esac
+                ],
+        [echo "systemd syslog logging  is disable"])
+
 AC_SUBST(SYSTEMD_CFLAGS)
 AC_SUBST(SYSTEMD_LDFLAGS)
+AC_SUBST(SYSLOG_HELPER_CFLAGS)
+AC_SUBST(SYSLOG_HELPER_LDFLAGS)
 AC_SUBST(UTILS)
 
 AC_HEADER_STDC

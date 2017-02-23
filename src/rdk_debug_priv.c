@@ -58,6 +58,9 @@
 #include <systemd/sd-journal.h>
 #endif //SYSTEMD_JOURNAL
 
+#ifdef SYSTEMD_SYSLOG_HELPER
+#include "syslog_helper_ifc.h"
+#endif
 
 /// Debugging messages are enabled.  Default is enabled (1) and 0 for off.
 static int g_debugEnabled = 1;
@@ -91,7 +94,6 @@ extern int global_count;
 
 
 #define MAX_LOGLINE_LENGTH 4096
-
 
 static int initLogger(char *category);
 
@@ -870,18 +872,23 @@ static int stream_env_append(log4c_appender_t* appender,
     int retval =0;
     FILE* fp = (FILE*)log4c_appender_get_udata(appender);
 
-#ifdef SYSTEMD_JOURNAL
+#if defined(SYSTEMD_JOURNAL)
     if (fp == stdout || fp == stderr)
     {
        retval = sd_journal_print(LOG_NOTICE, "%s",event->evt_rendered_msg);
     }
     else
     {
+        retval = fprintf(fp, "%s", event->evt_rendered_msg);
+        (void)fflush(fp);
+    }
 #endif
+#if defined(SYSTEMD_SYSLOG_HELPER)
+        send_logs_to_syslog(event->evt_rendered_msg);
+#endif
+#if !defined(SYSTEMD_JOURNAL) && !defined(SYSTEMD_SYSLOG_HELPER)
     retval = fprintf(fp, "%s", event->evt_rendered_msg);
     (void)fflush(fp);
-#ifdef SYSTEMD_JOURNAL
-    }
 #endif
 
     //free((void *)event->evt_rendered_msg);
@@ -895,7 +902,7 @@ static int stream_env_plus_stdout_append(log4c_appender_t* appender,
     int retval = 0;
     FILE* fp = (FILE*)log4c_appender_get_udata(appender);
 
-#ifdef SYSTEMD_JOURNAL
+#if defined(SYSTEMD_JOURNAL)
     if (fp != stdout || fp != stderr)
     {
        retval = fprintf(fp, "%s", event->evt_rendered_msg);
@@ -904,7 +911,12 @@ static int stream_env_plus_stdout_append(log4c_appender_t* appender,
     {
        retval = sd_journal_print(LOG_NOTICE, "%s",event->evt_rendered_msg);
     }
-#else
+#endif
+#if defined(SYSTEMD_SYSLOG_HELPER)
+        send_logs_to_syslog(event->evt_rendered_msg);
+#endif
+#if !defined(SYSTEMD_JOURNAL) && !defined(SYSTEMD_SYSLOG_HELPER)
+
     retval = fprintf(fp, "%s", event->evt_rendered_msg);
     fprintf(stdout, "%s", event->evt_rendered_msg);
     (void)fflush(stdout);
