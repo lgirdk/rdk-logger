@@ -103,6 +103,11 @@ static const char* basic_format_nocr(const log4c_layout_t* a_layout,
         const log4c_logging_event_t*a_event);
 static const char* comcast_dated_format_nocr(const log4c_layout_t* a_layout,
         const log4c_logging_event_t*a_event);
+static const char* comcast_light_format_nocr(const log4c_layout_t* a_layout,
+        const log4c_logging_event_t*a_event);
+
+static int journald_append(log4c_appender_t* appender, const log4c_logging_event_t* event);
+
 static int stream_env_overwrite_open(log4c_appender_t * appender);
 static int stream_env_append_open(log4c_appender_t * appender);
 static int stream_env_append(log4c_appender_t* appender, const log4c_logging_event_t* event);
@@ -154,6 +159,9 @@ static const log4c_layout_type_t log4c_layout_type_basic_nocr =
 static const log4c_layout_type_t log4c_layout_type_comcast_dated_nocr =
 { "comcast_dated_nocr", comcast_dated_format_nocr, };
 
+static const log4c_layout_type_t log4c_layout_type_comcast_light_nocr =
+{ "comcast_light_nocr", comcast_light_format_nocr, };
+
 static const log4c_appender_type_t
         log4c_appender_type_stream_env =
         { "stream_env", stream_env_overwrite_open, stream_env_append,
@@ -170,6 +178,9 @@ static const log4c_appender_type_t log4c_appender_type_stream_env_plus_stdout =
 static const log4c_appender_type_t log4c_appender_type_stream_env_append_plus_stdout =
 { "stream_env_append_plus_stdout", stream_env_append_open,
         stream_env_plus_stdout_append, stream_env_close, };
+
+static const log4c_appender_type_t log4c_appender_type_journald =
+    {"journald", NULL, journald_append, NULL,};
 
 void rdk_dbg_priv_Init()
 {
@@ -646,9 +657,12 @@ static int initLogger(char *category)
     (void) log4c_appender_type_set(&log4c_appender_type_stream_env_plus_stdout);
     (void) log4c_appender_type_set(
             &log4c_appender_type_stream_env_append_plus_stdout);
+    (void) log4c_appender_type_set(&log4c_appender_type_journald);
+
     (void) log4c_layout_type_set(&log4c_layout_type_dated_nocr);
     (void) log4c_layout_type_set(&log4c_layout_type_basic_nocr);
     (void) log4c_layout_type_set(&log4c_layout_type_comcast_dated_nocr);
+    (void) log4c_layout_type_set(&log4c_layout_type_comcast_light_nocr);
 
     if (log4c_init())
     {
@@ -755,6 +769,51 @@ static const char* comcast_dated_format_nocr(const log4c_layout_t* layout,
     }
     return event->evt_buffer.buf_data;
 }
+
+/*****************************************************************
+* No timestamp, no module! Mimics XRE Receiver's layout
+*/
+static const char* comcast_light_format_nocr(const log4c_layout_t* layout,
+        const log4c_logging_event_t*event)
+{
+    (void) snprintf(event->evt_buffer.buf_data, event->evt_buffer.buf_size,
+            "Thread-%ld [%s] %s",
+            syscall(SYS_gettid),
+            log4c_priority_to_string(event->evt_priority),
+            event->evt_msg);
+
+    if (event->evt_buffer.buf_size > 0 && event->evt_buffer.buf_data != NULL)
+    {
+        event->evt_buffer.buf_data[event->evt_buffer.buf_size - 1] = 0;
+    }
+
+    return event->evt_buffer.buf_data;
+}
+
+static int journald_append(log4c_appender_t* appender, const log4c_logging_event_t* event)
+{
+    int retval = 0;
+
+#if defined(SYSTEMD_JOURNAL)
+    // to support coloring in journalctl output
+    int priority = LOG_NOTICE;
+    switch (event->evt_priority)
+    {
+    case LOG4C_PRIORITY_FATAL: priority = LOG_CRIT; break;
+    case LOG4C_PRIORITY_ERROR: priority = LOG_ERR; break;
+    case LOG4C_PRIORITY_WARN: priority = LOG_WARNING; break;
+    case LOG4C_PRIORITY_NOTICE: priority = LOG_NOTICE; break;
+    case LOG4C_PRIORITY_INFO: priority = LOG_INFO; break;
+    case LOG4C_PRIORITY_DEBUG: priority = LOG_DEBUG; break;
+    default: priority = LOG_DEBUG; break;
+    }
+
+    retval = sd_journal_print(priority, "%s", event->evt_rendered_msg);
+#endif
+
+    return retval;
+}
+
 /****************************************************************
  * Stream layout that will parse environment variables from the
  * stream name (env vars have a leading "$(" and end with )"
