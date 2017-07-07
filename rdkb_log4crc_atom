@@ -71,6 +71,7 @@
     <rollingpolicy name="TOUCHSTONE_rollingpolicy" type="sizewin" maxsize="2097152" maxnum="2"/>
     <rollingpolicy name="WEBPA_rollingpolicy" type="sizewin" maxsize="2097152" maxnum="2"/>
     <rollingpolicy name="MESH_rollingpolicy" type="sizewin" maxsize="2097152" maxnum="2"/>
+    <rollingpolicy name="Seshat_rollingpolicy" type="sizewin" maxsize="2097152" maxnum="2"/>
         
 
  <!--   <appender name="stderr" type="stream_env" layout="dated"/>
@@ -86,6 +87,7 @@
     <appender name="RI_TOUCHSTONErollingfileappender" type="rollingfile" logdir="/rdklogs/logs/" prefix="TouchstoneLog.txt" layout="comcast_dated" rollingpolicy="TOUCHSTONE_rollingpolicy"/>
     <appender name="RI_WEBPArollingfileappender" type="rollingfile" logdir="/rdklogs/logs/" prefix="WEBPAlog.txt" layout="comcast_dated" rollingpolicy="WEBPA_rollingpolicy"/>
     <appender name="RI_MESHrollingfileappender" type="rollingfile" logdir="/rdklogs/logs/" prefix="MeshAgentLog.txt" layout="comcast_dated" rollingpolicy="MESH_rollingpolicy"/>
+    <appender name="RI_Seshatrollingfileappender" type="rollingfile" logdir="/rdklogs/logs/" prefix="SeshatLog.txt" layout="comcast_dated" rollingpolicy="Seshat_rollingpolicy"/>
 
    <!-- <appender name="stdout" type="stream_env" layout="comcast_dated"/> -->
 
@@ -133,6 +135,7 @@
 	<category name="RI.TOUCHSTONE" priority="debug" appender="RI_TOUCHSTONErollingfileappender"/> 
 	<category name="RI.WEBPA" priority="debug" appender="RI_WEBPArollingfileappender"/>
 	<category name="RI.MESH" priority="debug" appender="RI_MESHrollingfileappender"/> 
+        <category name="RI.Seshat" priority="debug" appender="RI_Seshatrollingfileappender"/>
 
     <!--  
         Logging categories available to the Platform are listed below
@@ -175,4 +178,7 @@
 
     <category name="RI.Stack.MESH" priority="debug" appender="RI_MESHrollingfileappender"/>
     <category name="RI.Stack.LOG.RDK.MESH" priority="debug" appender="RI_MESHrollingfileappender"/>
+
+    <category name="RI.Stack.Seshat" priority="debug" appender="RI_Seshatrollingfileappender"/>
+    <category name="RI.Stack.LOG.RDK.Seshat" priority="debug" appender="RI_Seshatrollingfileappender"/>
 </log4c>
