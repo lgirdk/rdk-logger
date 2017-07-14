@@ -72,6 +72,7 @@
     <rollingpolicy name="WEBPA_rollingpolicy" type="sizewin" maxsize="2097152" maxnum="2"/>
     <rollingpolicy name="MESH_rollingpolicy" type="sizewin" maxsize="2097152" maxnum="2"/>
     <rollingpolicy name="Seshat_rollingpolicy" type="sizewin" maxsize="2097152" maxnum="2"/>
+    <rollingpolicy name="MeshService_rollingpolicy" type="sizewin" maxsize="2097152" maxnum="2"/>
         
 
  <!--   <appender name="stderr" type="stream_env" layout="dated"/>
@@ -88,6 +89,7 @@
     <appender name="RI_WEBPArollingfileappender" type="rollingfile" logdir="/rdklogs/logs/" prefix="WEBPAlog.txt" layout="comcast_dated" rollingpolicy="WEBPA_rollingpolicy"/>
     <appender name="RI_MESHrollingfileappender" type="rollingfile" logdir="/rdklogs/logs/" prefix="MeshAgentLog.txt" layout="comcast_dated" rollingpolicy="MESH_rollingpolicy"/>
     <appender name="RI_Seshatrollingfileappender" type="rollingfile" logdir="/rdklogs/logs/" prefix="SeshatLog.txt" layout="comcast_dated" rollingpolicy="Seshat_rollingpolicy"/>
+    <appender name="RI_MeshServicerollingfileappender" type="rollingfile" logdir="/rdklogs/logs/" prefix="Plume.txt" layout="comcast_dated" rollingpolicy="MeshService_rollingpolicy"/>
 
    <!-- <appender name="stdout" type="stream_env" layout="comcast_dated"/> -->
 
@@ -136,6 +138,7 @@
 	<category name="RI.WEBPA" priority="debug" appender="RI_WEBPArollingfileappender"/>
 	<category name="RI.MESH" priority="debug" appender="RI_MESHrollingfileappender"/> 
         <category name="RI.Seshat" priority="debug" appender="RI_Seshatrollingfileappender"/>
+	<category name="RI.MeshService" priority="debug" appender="RI_MeshServicerollingfileappender"/> 
 
     <!--  
         Logging categories available to the Platform are listed below
@@ -181,4 +184,7 @@
 
     <category name="RI.Stack.Seshat" priority="debug" appender="RI_Seshatrollingfileappender"/>
     <category name="RI.Stack.LOG.RDK.Seshat" priority="debug" appender="RI_Seshatrollingfileappender"/>
+
+    <category name="RI.Stack.MeshService" priority="debug" appender="RI_MeshServicerollingfileappender"/>
+    <category name="RI.Stack.LOG.RDK.MeshService" priority="debug" appender="RI_MeshServicerollingfileappender"/>
 </log4c>
