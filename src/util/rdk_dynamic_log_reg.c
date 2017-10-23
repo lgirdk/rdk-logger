@@ -26,7 +26,7 @@
 #include "dynamicLogger.h"
 #include "rdk_log_reg.h"
 
-#define LENGTH_1 25
+#define LENGTH_1 40
 #define LENGTH_2 10
 #define LENGTH_3 4
 
@@ -42,6 +42,7 @@ typedef struct rdk_logger_component_details{
 static GList *registeredCompList = NULL;
 static char appName[LENGTH_1] = "";
 static int initStatus = 0;
+static rdk_logger_logCtrlCallback_t defaultLogger_CB = NULL;
 
 /**
  * The displayGList function will display the details of the registered components.
@@ -88,6 +89,7 @@ void EvtHandler(const char *owner, IARM_EventId_t eventId, void *data, size_t le
     IARM_Bus_DynamicLogger_EventData_t *eventData = NULL;
     rdk_logger_component_details_t *compDetails = NULL;
     GList *comp_list = NULL;
+    int cbFound = 0;
  
     if((NULL == owner) || (NULL == data))
     {
@@ -118,10 +120,15 @@ void EvtHandler(const char *owner, IARM_EventId_t eventId, void *data, size_t le
                 {
                     printf("Sending Event with log status : %d  \n",eventData->log_status);
                     compDetails->LOGCTRL_CB(eventData->moduleName, eventData->subModuleName, eventData->logLevel,eventData->log_status);
+                    cbFound = 1;
                     break;
                 }
             }
         }while((comp_list = g_list_next(comp_list)) != NULL);
+    }
+    if((NULL != defaultLogger_CB) && (0 == cbFound))
+    {
+        defaultLogger_CB(eventData->moduleName, eventData->subModuleName, eventData->logLevel,eventData->log_status);
     }
 }
 
@@ -260,14 +267,18 @@ void rdk_logger_registerLogCtrlComp(const char* module,const char* subModule,rdk
     rdk_logger_component_details_t *modDetails = NULL;
     GList * moduleNode = NULL;
 
-    if((NULL == module) || (NULL == CB))
+    if(NULL == CB)
     {
         return;
     }
-
     if(appName[0] == '\0')
     {
         printf("App not registered!!");
+        return;
+    }
+    if(NULL == module)
+    {
+        defaultLogger_CB = CB;
         return;
     }
 
