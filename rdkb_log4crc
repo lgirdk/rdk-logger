@@ -94,6 +94,7 @@
     <rollingpolicy name="ETHAGENT_rollingpolicy" type="sizewin" maxsize="2097152" maxnum="2"/>
     <rollingpolicy name="GWPROV_rollingpolicy" type="sizewin" maxsize="2097152" maxnum="2"/>
     <rollingpolicy name="AKER_rollingpolicy" type="sizewin" maxsize="2097152" maxnum="2"/>
+    <rollingpolicy name="PARODUS_rollingpolicy" type="sizewin" maxsize="2097152" maxnum="2"/>
 
 
  <!--   <appender name="stderr" type="stream_env" layout="dated"/>
@@ -132,6 +133,7 @@
     <appender name="RI_ETHAGENTrollingfileappender" type="rollingfile" logdir="/rdklogs/logs/" prefix="ETHAGENTLog.txt" layout="comcast_dated" rollingpolicy="ETHAGENT_rollingpolicy"/>
     <appender name="RI_GWPROVrollingfileappender" type="rollingfile" logdir="/rdklogs/logs/" prefix="GWPROVLog.txt" layout="comcast_dated" rollingpolicy="GWPROV_rollingpolicy"/>
     <appender name="RI_AKERrollingfileappender" type="rollingfile" logdir="/rdklogs/logs/" prefix="AKERlog.txt" layout="comcast_dated" rollingpolicy="AKER_rollingpolicy"/>
+    <appender name="RI_PARODUSrollingfileappender" type="rollingfile" logdir="/rdklogs/logs/" prefix="PARODUSlog.txt" layout="comcast_dated" rollingpolicy="PARODUS_rollingpolicy"/>
 
     <!-- <appender name="stdout" type="stream_env" layout="comcast_dated"/> -->
 
@@ -201,6 +203,7 @@
     <category name="RI.ETHAGENT" priority="debug" appender="RI_ETHAGENTrollingfileappender"/>
     <category name="RI.GWPROV" priority="debug" appender="RI_GWPROVrollingfileappender"/>
     <category name="RI.AKER" priority="debug" appender="RI_AKERrollingfileappender"/>
+    <category name="RI.PARODUS" priority="debug" appender="RI_PARODUSrollingfileappender"/>
     <!--  
         Logging categories available to the Platform are listed below
         
@@ -307,4 +310,7 @@
 
         <category name="RI.Stack.AKER" priority="debug" appender="RI_AKERrollingfileappender"/>
         <category name="RI.Stack.LOG.RDK.AKER" priority="debug" appender="RI_AKERrollingfileappender"/>
+
+	<category name="RI.Stack.PARODUS" priority="debug" appender="RI_PARODUSrollingfileappender"/>
+	<category name="RI.Stack.LOG.RDK.PARODUS" priority="debug" appender="RI_PARODUSrollingfileappender"/>
 </log4c>
