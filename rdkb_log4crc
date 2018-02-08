@@ -65,6 +65,7 @@
     <!--<rollingpolicy name="RI_rollingpolicy" type="sizewin" maxsize="10485760" maxnum="10"/>-->
     <rollingpolicy name="TR69_rollingpolicy" type="sizewin" maxsize="2097152" maxnum="2"/>
     <rollingpolicy name="WEBPA_rollingpolicy" type="sizewin" maxsize="2097152" maxnum="2"/>
+    <rollingpolicy name="XWCLIENT_rollingpolicy" type="sizewin" maxsize="2097152" maxnum="2"/>
     <rollingpolicy name="PAM_rollingpolicy" type="sizewin" maxsize="2097152" maxnum="2"/>
     <rollingpolicy name="PSM_rollingpolicy" type="sizewin" maxsize="2097152" maxnum="2"/>
     <rollingpolicy name="MOCA_rollingpolicy" type="sizewin" maxsize="2097152" maxnum="2"/>
@@ -104,6 +105,7 @@
     
     <appender name="RI_TR69rollingfileappender" type="rollingfile" logdir="/rdklogs/logs/" prefix="TR69log.txt" layout="comcast_dated" rollingpolicy="TR69_rollingpolicy"/>
     <appender name="RI_WEBPArollingfileappender" type="rollingfile" logdir="/rdklogs/logs/" prefix="WEBPAlog.txt" layout="comcast_dated" rollingpolicy="WEBPA_rollingpolicy"/>
+    <appender name="RI_XWCLIENTrollingfileappender" type="rollingfile" logdir="/rdklogs/logs/" prefix="XWCLIENTlog.txt" layout="comcast_dated" rollingpolicy="XWCLIENT_rollingpolicy"/>
     <appender name="RI_PAMrollingfileappender" type="rollingfile" logdir="/rdklogs/logs/" prefix="PAMlog.txt" layout="comcast_dated" rollingpolicy="PAM_rollingpolicy"/>
     <appender name="RI_PSMrollingfileappender" type="rollingfile" logdir="/rdklogs/logs/" prefix="PSMlog.txt" layout="comcast_dated" rollingpolicy="PSM_rollingpolicy"/>
     <appender name="RI_MOCArollingfileappender" type="rollingfile" logdir="/rdklogs/logs/" prefix="MOCAlog.txt" layout="comcast_dated" rollingpolicy="MOCA_rollingpolicy"/>
@@ -175,6 +177,7 @@
     	<!--<category name="RI" priority="debug" appender="RI_rollingfileappender"/>-->
 	<category name="RI.TR69" priority="debug" appender="RI_TR69rollingfileappender"/>
 	<category name="RI.WEBPA" priority="debug" appender="RI_WEBPArollingfileappender"/>
+        <category name="RI.XWCLIENT" priority="debug" appender="RI_XWCLIENTrollingfileappender"/>
 	<category name="RI.PAM" priority="debug" appender="RI_PAMrollingfileappender"/>
 	<category name="RI.PSM" priority="debug" appender="RI_PSMrollingfileappender"/>
 	<category name="RI.MOCA" priority="debug" appender="RI_MOCArollingfileappender"/>  
@@ -228,6 +231,9 @@
 	
 	<category name="RI.Stack.WEBPA" priority="debug" appender="RI_WEBPArollingfileappender"/>
 	<category name="RI.Stack.LOG.RDK.WEBPA" priority="debug" appender="RI_WEBPArollingfileappender"/>
+
+        <category name="RI.Stack.XWCLIENT" priority="debug" appender="RI_XWCLIENTrollingfileappender"/>
+        <category name="RI.Stack.LOG.RDK.XWCLIENT" priority="debug" appender="RI_XWCLIENTrollingfileappender"/>
 	
 	<category name="RI.Stack.PAM" priority="debug" appender="RI_PAMrollingfileappender"/>
 	<category name="RI.Stack.LOG.RDK.PAM" priority="debug" appender="RI_PAMrollingfileappender"/>
