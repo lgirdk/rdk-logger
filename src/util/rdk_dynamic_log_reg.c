@@ -69,6 +69,7 @@ void displayGList()
                      compDetails->compName, compDetails->subCompName);
         }
     }
+    fflush(stdout);
     return;
 }
 
@@ -98,11 +99,14 @@ void EvtHandler(const char *owner, IARM_EventId_t eventId, void *data, size_t le
 
     eventData = (IARM_Bus_DynamicLogger_EventData_t *)data;
 
+    //printf("Event Details : owner(Expecting %s) : %s, eventId(Expecting %d) : %d, Event App Name(Expecting %s) : %s !!! \n", IARM_BUS_DYNAMIC_LOGGER_NAME, owner, IARM_BUS_DYNAMICLOGGER_EVENT_LOG_STATUS, eventId, appName, eventData->appName);
+
     /*Confirm whether the intended event is received*/
     if((0 != strncmp(owner, IARM_BUS_DYNAMIC_LOGGER_NAME, strlen(IARM_BUS_DYNAMIC_LOGGER_NAME))) ||
        (IARM_BUS_DYNAMICLOGGER_EVENT_LOG_STATUS != eventId) ||
-       (0 != strncmp(eventData->appName, appName, strlen(appName))))
+       (0 != strncmp(appName, eventData->appName, LENGTH_1)))
     {
+        printf("App Name comparison failed!!! \n");
         return;
     }
 
@@ -111,24 +115,30 @@ void EvtHandler(const char *owner, IARM_EventId_t eventId, void *data, size_t le
     if(comp_list != NULL) {
         do
         {
+            //printf("Trying to find out the component!!! \n");
             /*Traverse through the list to identify the component*/
             compDetails = (rdk_logger_component_details_t *) comp_list->data;
             if(NULL != compDetails)
             {
-                if((0 == strncmp(compDetails->compName, eventData->moduleName,strlen(compDetails->compName))) &&
-                   (0 == strncmp(compDetails->subCompName, eventData->subModuleName, strlen(compDetails->subCompName))))
+                //printf("Event Details : ModuleName(Expecting %s) : %s, SubModuleName(Expecting %s) : %s \n", compDetails->compName,eventData->moduleName, compDetails->subCompName, eventData->subModuleName);
+                if((0 == strncmp(compDetails->compName, eventData->moduleName,LENGTH_1)) &&
+                   (0 == strncmp(compDetails->subCompName, eventData->subModuleName, LENGTH_1)))
                 {
-                    printf("Sending Event with log status : %d  \n",eventData->log_status);
+                    printf("Sending Event to %s \n", eventData->moduleName);
                     compDetails->LOGCTRL_CB(eventData->moduleName, eventData->subModuleName, eventData->logLevel,eventData->log_status);
                     cbFound = 1;
                     break;
                 }
             }
         }while((comp_list = g_list_next(comp_list)) != NULL);
+
+        if (0 == cbFound)
+            printf("Could not find requested Module/SubModule \n");
     }
     if((NULL != defaultLogger_CB) && (0 == cbFound))
     {
         defaultLogger_CB(eventData->moduleName, eventData->subModuleName, eventData->logLevel,eventData->log_status);
+        printf("Default Logger CB called \n");
     }
 }
 
@@ -216,9 +226,9 @@ void rdk_logger_setAppName(const char * App)
         printf("Dynamic logger not initialized \n");
         return;
     }
-    if((appName[0] == '\0') && (App != NULL))
+    if(App != NULL)
     {
-        strncpy(appName ,App, strlen(App));
+        strncpy(appName ,App, (sizeof(appName) - 1));
     }
     else
     {
@@ -241,7 +251,7 @@ static gint rdk_logger_isComponentPresent(gconstpointer pa, gconstpointer pb)
     const rdk_logger_component_details_t *a = (rdk_logger_component_details_t *)pa;
     const rdk_logger_component_details_t *b = (rdk_logger_component_details_t *)pb;
 
-    return (strncmp(a->compName, b->compName, LENGTH_1) || strncmp(a->subCompName,b->subCompName,LENGTH_1));
+    return (strncmp(a->compName, b->compName, LENGTH_1) || strncmp(a->subCompName, b->subCompName, LENGTH_1));
 
 }
 
@@ -289,16 +299,16 @@ void rdk_logger_registerLogCtrlComp(const char* module,const char* subModule,rdk
 
         if(NULL != modDetails)
         {
-            strncpy(modDetails->appName,appName,strlen(appName));
-            strncpy(modDetails->compName,module,strlen(module));
+            strncpy(modDetails->appName,appName,(sizeof(modDetails->appName) - 1));
+            strncpy(modDetails->compName,module,(sizeof(modDetails->compName) - 1));
             /*If sub module details are not provided during registration, copy 'NULL' to the list*/
             if(NULL != subModule)
             {
-                strncpy(modDetails->subCompName,subModule,strlen(subModule));
+                strncpy(modDetails->subCompName,subModule,(sizeof(modDetails->subCompName) - 1));
             }
             else
             {
-                strncpy(modDetails->subCompName,"NULL",LENGTH_NULL);
+                strncpy(modDetails->subCompName,"NULL",(sizeof(modDetails->subCompName) - 1));
             }
             modDetails->LOGCTRL_CB = CB;
         }
@@ -343,12 +353,12 @@ void rdk_logger_unRegisterLogCtrlComp(const char* module,const char* subModule)
     if(NULL == module)
     return;
 
-    strncpy(lModule, module, strlen(module));
+    strncpy(lModule, module, (sizeof(lModule) - 1));
 
     if(NULL == subModule)
-        strncpy(lsubModule, "NULL", LENGTH_NULL);
+        strncpy(lsubModule, "NULL", (sizeof(lsubModule) - 1));
     else
-        strncpy(lsubModule, subModule, strlen(subModule));
+        strncpy(lsubModule, subModule, (sizeof(lsubModule) - 1));
     /*Traverse through the glist and remove the unregistered component*/
     comp_list = g_list_first(registeredCompList);
 
@@ -358,8 +368,8 @@ void rdk_logger_unRegisterLogCtrlComp(const char* module,const char* subModule)
             compDetails = (rdk_logger_component_details_t *) comp_list->data;
             if(NULL != compDetails)
             {
-                if((0 == strncmp(compDetails->compName, lModule, strlen(compDetails->compName))) &&
-                   (0 == strncmp(compDetails->subCompName, lsubModule, strlen(compDetails->subCompName))))
+                if((0 == strncmp(compDetails->compName, lModule, LENGTH_1)) &&
+                   (0 == strncmp(compDetails->subCompName, lsubModule, LENGTH_1)))
                 {
                     registeredCompList = g_list_remove(registeredCompList,(void *)compDetails);
                     free(compDetails);
