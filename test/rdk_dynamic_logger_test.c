@@ -20,7 +20,7 @@
 #include<stdio.h>
 #include<string.h>
 #include "libIBus.h"
-#include "rdk_log_reg.h"
+#include "rdk_dynamic_log.h"
 
 
 /*
@@ -127,7 +127,7 @@ void main()
 {
     IARM_Bus_Init(IARM_BUS_DYNAMIC_LOGGER_TESTAPP);
     IARM_Bus_Connect();
-    rdk_logger_initialize();
+    rdk_dynamic_logger_initialize();
     int i = 1;
     char appName[] = "Apppppppppppppppppppppppppppppppppppppppppppppppppppppplication";
     char module1[] = "Moduuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuule1";
@@ -145,11 +145,11 @@ void main()
 
         printf("Registering app Application1 \n");
         fflush(stdout);
-        rdk_logger_setAppName("Application1");
-        rdk_logger_registerLogCtrlComp("ClosedCaption1", NULL, CC_LOG_ControlCB1);
-        rdk_logger_registerLogCtrlComp("ClosedCaption2", NULL, CC_LOG_ControlCB2);
-        rdk_logger_registerLogCtrlComp("ServiceManager", "devicesettings", CC_LOG_ControlCB3);
-        rdk_logger_registerLogCtrlComp("ServiceManager", "hdmicec", CC_LOG_ControlCB4);
+        rdk_dynamic_logger_setAppName("Application1");
+        rdk_dynamic_logger_registerLogCtrlComp("ClosedCaption1", NULL, CC_LOG_ControlCB1);
+        rdk_dynamic_logger_registerLogCtrlComp("ClosedCaption2", NULL, CC_LOG_ControlCB2);
+        rdk_dynamic_logger_registerLogCtrlComp("ServiceManager", "devicesettings", CC_LOG_ControlCB3);
+        rdk_dynamic_logger_registerLogCtrlComp("ServiceManager", "hdmicec", CC_LOG_ControlCB4);
 
     break;
 
@@ -157,11 +157,11 @@ void main()
 
         printf("Registering app Application2 \n");
         fflush(stdout);
-        rdk_logger_setAppName("Application2");
-        rdk_logger_registerLogCtrlComp("ClosedCaption1", NULL, CC_LOG_CallBack1);
-        rdk_logger_registerLogCtrlComp("ClosedCaption2", NULL, CC_LOG_CallBack2);
-        rdk_logger_registerLogCtrlComp("ServiceManager", "devicesettings", CC_LOG_CallBack3);
-        rdk_logger_registerLogCtrlComp("ServiceManager", "hdmicec", CC_LOG_CallBack4);
+        rdk_dynamic_logger_setAppName("Application2");
+        rdk_dynamic_logger_registerLogCtrlComp("ClosedCaption1", NULL, CC_LOG_CallBack1);
+        rdk_dynamic_logger_registerLogCtrlComp("ClosedCaption2", NULL, CC_LOG_CallBack2);
+        rdk_dynamic_logger_registerLogCtrlComp("ServiceManager", "devicesettings", CC_LOG_CallBack3);
+        rdk_dynamic_logger_registerLogCtrlComp("ServiceManager", "hdmicec", CC_LOG_CallBack4);
 
     break;
 
@@ -169,15 +169,15 @@ void main()
 
         printf("Registering app %s for boundary testing \n",appName);
         fflush(stdout);
-        rdk_logger_setAppName(appName);
+        rdk_dynamic_logger_setAppName(appName);
         printf("Registering Module : %s (Length : %d)& SubModule : NULL\n", module1, strlen(module1));
-        rdk_logger_registerLogCtrlComp(module1, NULL, CC_LOG_CallBack1);
+        rdk_dynamic_logger_registerLogCtrlComp(module1, NULL, CC_LOG_CallBack1);
         printf("Registering Module : %s (Length : %d)& SubModule : NULL\n", module2, strlen(module2));
-        rdk_logger_registerLogCtrlComp(module2, NULL, CC_LOG_CallBack2);
+        rdk_dynamic_logger_registerLogCtrlComp(module2, NULL, CC_LOG_CallBack2);
         printf("Registering Module : ServiceManager & SubModule : %s(Length : %d)\n", subModule1, strlen(subModule1));
-        rdk_logger_registerLogCtrlComp("ServiceManager", subModule1, CC_LOG_CallBack3);
+        rdk_dynamic_logger_registerLogCtrlComp("ServiceManager", subModule1, CC_LOG_CallBack3);
         printf("Registering Module : ServiceManager & SubModule : %s(Length : %d)\n", subModule2, strlen(subModule2));
-        rdk_logger_registerLogCtrlComp("ServiceManager", subModule2, CC_LOG_CallBack4);
+        rdk_dynamic_logger_registerLogCtrlComp("ServiceManager", subModule2, CC_LOG_CallBack4);
 
     break;
 
@@ -192,16 +192,16 @@ void main()
         sleep(10);
     }
 
-    rdk_logger_unRegisterLogCtrlComp("ServiceManager", "hdmicec");
-    rdk_logger_unRegisterLogCtrlComp("ClosedCaption2", NULL);
-    rdk_logger_unRegisterLogCtrlComp("ClosedCaption1", NULL);
-    rdk_logger_unRegisterLogCtrlComp("ServiceManager", "devicesettings");
-    rdk_logger_unRegisterLogCtrlComp(module1, NULL);
-    rdk_logger_unRegisterLogCtrlComp(module2, NULL);
-    rdk_logger_unRegisterLogCtrlComp("ServiceManager", subModule1);
-    rdk_logger_unRegisterLogCtrlComp("ServiceManager", subModule2);
+    rdk_dynamic_logger_unRegisterLogCtrlComp("ServiceManager", "hdmicec");
+    rdk_dynamic_logger_unRegisterLogCtrlComp("ClosedCaption2", NULL);
+    rdk_dynamic_logger_unRegisterLogCtrlComp("ClosedCaption1", NULL);
+    rdk_dynamic_logger_unRegisterLogCtrlComp("ServiceManager", "devicesettings");
+    rdk_dynamic_logger_unRegisterLogCtrlComp(module1, NULL);
+    rdk_dynamic_logger_unRegisterLogCtrlComp(module2, NULL);
+    rdk_dynamic_logger_unRegisterLogCtrlComp("ServiceManager", subModule1);
+    rdk_dynamic_logger_unRegisterLogCtrlComp("ServiceManager", subModule2);
 
-    rdk_logger_unInitialize();
+    rdk_dynamic_logger_unInitialize();
     IARM_Bus_Disconnect();
     IARM_Bus_Term();
     return;

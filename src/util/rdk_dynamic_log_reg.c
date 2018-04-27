@@ -24,7 +24,7 @@
 #include <glib.h>
 #include "libIBus.h"
 #include "dynamicLogger.h"
-#include "rdk_log_reg.h"
+#include "rdk_dynamic_log.h"
 
 #define LENGTH_1 64
 #define LENGTH_2 64
@@ -36,13 +36,13 @@ typedef struct rdk_logger_component_details{
     char subCompName[LENGTH_1];
     char logLevel[LENGTH_2];
     int logStatus;
-    rdk_logger_logCtrlCallback_t LOGCTRL_CB;
+    rdk_dynamic_logger_logCtrlCallback_t LOGCTRL_CB;
 }rdk_logger_component_details_t;
 
 static GList *registeredCompList = NULL;
 static char appName[LENGTH_1] = "";
 static int initStatus = 0;
-static rdk_logger_logCtrlCallback_t defaultLogger_CB = NULL;
+static rdk_dynamic_logger_logCtrlCallback_t defaultLogger_CB = NULL;
 
 /**
  * The displayGList function will display the details of the registered components.
@@ -143,13 +143,13 @@ void EvtHandler(const char *owner, IARM_EventId_t eventId, void *data, size_t le
 }
 
 /**
- * The rdk_logger_initialize function will initialize the log registration utility.
+ * The rdk_dynamic_logger_initialize function will initialize the log registration utility.
  *
  * @param none
  * @return none
  *
  */
-void rdk_logger_initialize()
+void rdk_dynamic_logger_initialize()
 {
     if(0 != initStatus)
     {
@@ -165,13 +165,13 @@ void rdk_logger_initialize()
 }
 
 /**
- * The rdk_logger_unInitialize function will unInitialize the log registration utility.
+ * The rdk_dynamic_logger_unInitialize function will unInitialize the log registration utility.
  *
  * @param none
  * @return none
  *
  */
-void rdk_logger_unInitialize()
+void rdk_dynamic_logger_unInitialize()
 {
     if(1 != initStatus)
     {
@@ -207,7 +207,7 @@ void rdk_logger_unInitialize()
 }
 
 /**
- * The rdk_logger_setAppName function can be used to
+ * The rdk_dynamic_logger_setAppName function can be used to
  * register the Application name which intends to use the
  * dynamic logging feature for its components.Upon initialization,
  * each application should register its unique name.
@@ -219,7 +219,7 @@ void rdk_logger_unInitialize()
  * @return none
  *
  */
-void rdk_logger_setAppName(const char * App)
+void rdk_dynamic_logger_setAppName(const char * App)
 {
     if(1 != initStatus)
     {
@@ -238,7 +238,7 @@ void rdk_logger_setAppName(const char * App)
 }
 
 /**
- * The rdk_logger_isComponentPresent is an internal function which is used to compare
+ * The rdk_dynamic_logger_isComponentPresent is an internal function which is used to compare
  * each glist entry.
  *
  * @param pa Parameter 1 for comparison
@@ -246,7 +246,7 @@ void rdk_logger_setAppName(const char * App)
  * @return none
  *
  */
-static gint rdk_logger_isComponentPresent(gconstpointer pa, gconstpointer pb)
+static gint rdk_dynamic_logger_isComponentPresent(gconstpointer pa, gconstpointer pb)
 {
     const rdk_logger_component_details_t *a = (rdk_logger_component_details_t *)pa;
     const rdk_logger_component_details_t *b = (rdk_logger_component_details_t *)pb;
@@ -256,7 +256,7 @@ static gint rdk_logger_isComponentPresent(gconstpointer pa, gconstpointer pb)
 }
 
 /**
- * The rdk_logger_registerLogCtrlComp function can be used to 
+ * The rdk_dynamic_logger_registerLogCtrlComp function can be used to 
  * register the component and sub-component name.
  *
  * @param componentName Name of the component
@@ -267,7 +267,7 @@ static gint rdk_logger_isComponentPresent(gconstpointer pa, gconstpointer pb)
  * @return none
  *
  */
-void rdk_logger_registerLogCtrlComp(const char* module,const char* subModule,rdk_logger_logCtrlCallback_t CB)
+void rdk_dynamic_logger_registerLogCtrlComp(const char* module,const char* subModule,rdk_dynamic_logger_logCtrlCallback_t CB)
 {
     if(1 != initStatus)
     {
@@ -314,7 +314,7 @@ void rdk_logger_registerLogCtrlComp(const char* module,const char* subModule,rdk
         }
     }
 
-    moduleNode = g_list_find_custom(registeredCompList, modDetails,rdk_logger_isComponentPresent);
+    moduleNode = g_list_find_custom(registeredCompList, modDetails,rdk_dynamic_logger_isComponentPresent);
     if(NULL != moduleNode)
     {
         printf("Dynamic Log Reg: Component Already registered\n");
@@ -329,7 +329,7 @@ void rdk_logger_registerLogCtrlComp(const char* module,const char* subModule,rdk
     return;
 }
 /**
- * The rdk_logger_unRegisterLogCtrlComp function can be used to 
+ * The rdk_dynamic_logger_unRegisterLogCtrlComp function can be used to 
  * unRegister the component and/or sub-component name.
  *
  * @param componentName Name of the component
@@ -338,7 +338,7 @@ void rdk_logger_registerLogCtrlComp(const char* module,const char* subModule,rdk
  * @return none
  *
  */
-void rdk_logger_unRegisterLogCtrlComp(const char* module,const char* subModule)
+void rdk_dynamic_logger_unRegisterLogCtrlComp(const char* module,const char* subModule)
 {
     if(1 != initStatus)
     {

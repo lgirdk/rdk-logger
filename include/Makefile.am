@@ -23,5 +23,5 @@ librdkloggers_la_include_HEADERS = rdk_debug.h rdk_error.h rdk_logger_types.h rd
 
 if IS_DYNAMIC_ENABLED
 libloggerutil_la_includedir = $(includedir)
-libloggerutil_la_include_HEADERS = rdk_log_reg.h
+libloggerutil_la_include_HEADERS = rdk_dynamic_log.h
 endif
