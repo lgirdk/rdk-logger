@@ -21,7 +21,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include <glib.h>
+#include <rdk_linkedlist.h>
 #include "libIBus.h"
 #include "dynamicLogger.h"
 #include "rdk_log_reg.h"
@@ -39,7 +39,7 @@ typedef struct rdk_logger_component_details{
     rdk_logger_logCtrlCallback_t LOGCTRL_CB;
 }rdk_logger_component_details_t;
 
-static GList *registeredCompList = NULL;
+static rdkList_t *registeredCompList = NULL;
 static char appName[LENGTH_1] = "";
 static int initStatus = 0;
 static rdk_logger_logCtrlCallback_t defaultLogger_CB = NULL;
@@ -54,15 +54,15 @@ static rdk_logger_logCtrlCallback_t defaultLogger_CB = NULL;
  */
 void displayGList()
 {
-    GList *list = NULL;
+    rdkList_t *list = NULL;
     rdk_logger_component_details_t *compDetails = NULL;
 
-    registeredCompList = g_list_first(registeredCompList);
+    registeredCompList = rdk_list_find_first_node(registeredCompList);
     printf(" ************Displaying GList for %s *************\n",appName);
     for(list = registeredCompList; list != NULL; list = list->next)
     {
         /*Traverse through each member of the list and display the details*/
-        compDetails = (rdk_logger_component_details_t *)list->data;
+        compDetails = (rdk_logger_component_details_t *)list->m_pUserData;
         if(NULL != compDetails)
         {
             printf(" COMPONENT NAME : %s , SUB-COMPONENT NAME : %s \n",
@@ -88,7 +88,7 @@ void EvtHandler(const char *owner, IARM_EventId_t eventId, void *data, size_t le
 {
     IARM_Bus_DynamicLogger_EventData_t *eventData = NULL;
     rdk_logger_component_details_t *compDetails = NULL;
-    GList *comp_list = NULL;
+    rdkList_t *comp_list = NULL;
     int cbFound = 0;
 
     if((NULL == owner) || (NULL == data))
@@ -106,13 +106,13 @@ void EvtHandler(const char *owner, IARM_EventId_t eventId, void *data, size_t le
         return;
     }
 
-    comp_list = g_list_first(registeredCompList);
+    comp_list = rdk_list_find_first_node(registeredCompList);
 
     if(comp_list != NULL) {
         do
         {
             /*Traverse through the list to identify the component*/
-            compDetails = (rdk_logger_component_details_t *) comp_list->data;
+            compDetails = (rdk_logger_component_details_t *) comp_list->m_pUserData;
             if(NULL != compDetails)
             {
                 if((0 == strncmp(compDetails->compName, eventData->moduleName,strlen(compDetails->compName))) &&
@@ -124,7 +124,7 @@ void EvtHandler(const char *owner, IARM_EventId_t eventId, void *data, size_t le
                     break;
                 }
             }
-        }while((comp_list = g_list_next(comp_list)) != NULL);
+        }while((comp_list = rdk_list_find_next_node(comp_list)) != NULL);
     }
     if((NULL != defaultLogger_CB) && (0 == cbFound))
     {
@@ -168,17 +168,17 @@ void rdk_logger_unInitialize()
         printf("Dynamic logger not initialized \n");
         return;
     }
-    GList *list = NULL;
+    rdkList_t *list = NULL;
     rdk_logger_component_details_t *compDetails = NULL;
 
     /*Un-Register for dynamic logger event*/
     IARM_Bus_UnRegisterEventHandler(IARM_BUS_DYNAMIC_LOGGER_NAME, IARM_BUS_DYNAMICLOGGER_EVENT_LOG_STATUS);
 
     /*Clean up the memory allocated for the glist*/
-    registeredCompList = g_list_first(registeredCompList);
+    registeredCompList = rdk_list_find_first_node(registeredCompList);
     for(list = registeredCompList; list != NULL; list = list->next)
     {
-        compDetails = (rdk_logger_component_details_t *)list->data;
+        compDetails = (rdk_logger_component_details_t *)list->m_pUserData;
         if(NULL != compDetails)
         {
             free(compDetails);
@@ -187,7 +187,7 @@ void rdk_logger_unInitialize()
     }
     if(NULL != registeredCompList)
     {
-        g_list_free(registeredCompList);
+        rdk_list_free_all_nodes(registeredCompList);
         registeredCompList = NULL;
     }
     memset(appName,0,sizeof(appName));
@@ -236,7 +236,7 @@ void rdk_logger_setAppName(const char * App)
  * @return none
  *
  */
-static gint rdk_logger_isComponentPresent(gconstpointer pa, gconstpointer pb)
+static int rdk_logger_isComponentPresent(const void *pa, const void *pb)
 {
     const rdk_logger_component_details_t *a = (rdk_logger_component_details_t *)pa;
     const rdk_logger_component_details_t *b = (rdk_logger_component_details_t *)pb;
@@ -265,7 +265,7 @@ void rdk_logger_registerLogCtrlComp(const char* module,const char* subModule,rdk
         return;
     }
     rdk_logger_component_details_t *modDetails = NULL;
-    GList * moduleNode = NULL;
+    rdkList_t * moduleNode = NULL;
 
     if(NULL == CB)
     {
@@ -304,7 +304,7 @@ void rdk_logger_registerLogCtrlComp(const char* module,const char* subModule,rdk
         }
     }
 
-    moduleNode = g_list_find_custom(registeredCompList, modDetails,rdk_logger_isComponentPresent);
+    moduleNode = rdk_list_find_node_custom(registeredCompList, modDetails,rdk_logger_isComponentPresent);
     if(NULL != moduleNode)
     {
         printf("Dynamic Log Reg: Component Already registered\n");
@@ -313,7 +313,7 @@ void rdk_logger_registerLogCtrlComp(const char* module,const char* subModule,rdk
     }
     else
     {
-        registeredCompList = g_list_append(registeredCompList, modDetails);
+        registeredCompList = rdk_list_add_node(registeredCompList, modDetails);
     }
     //displayGList();
     return;
@@ -338,7 +338,7 @@ void rdk_logger_unRegisterLogCtrlComp(const char* module,const char* subModule)
     char lModule[LENGTH_1] = "";
     char lsubModule[LENGTH_1] = "";
     rdk_logger_component_details_t *compDetails = NULL;
-    GList *comp_list = NULL;
+    rdkList_t *comp_list = NULL;
 
     if(NULL == module)
     return;
@@ -350,23 +350,23 @@ void rdk_logger_unRegisterLogCtrlComp(const char* module,const char* subModule)
     else
         strncpy(lsubModule, subModule, strlen(subModule));
     /*Traverse through the glist and remove the unregistered component*/
-    comp_list = g_list_first(registeredCompList);
+    comp_list = rdk_list_find_first_node(registeredCompList);
 
     if(comp_list != NULL) {
         do
         {
-            compDetails = (rdk_logger_component_details_t *) comp_list->data;
+            compDetails = (rdk_logger_component_details_t *) comp_list->m_pUserData;
             if(NULL != compDetails)
             {
                 if((0 == strncmp(compDetails->compName, lModule, strlen(compDetails->compName))) &&
                    (0 == strncmp(compDetails->subCompName, lsubModule, strlen(compDetails->subCompName))))
                 {
-                    registeredCompList = g_list_remove(registeredCompList,(void *)compDetails);
+                    registeredCompList = rdk_list_remove(registeredCompList,(void *)compDetails);
                     free(compDetails);
                     break;
                 }
             }
-        }while((comp_list = g_list_next(comp_list)) != NULL);
+        }while((comp_list = rdk_list_find_next_node(comp_list)) != NULL);
     }
     //displayGList();
     return;
