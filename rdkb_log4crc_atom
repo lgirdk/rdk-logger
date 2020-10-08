@@ -69,7 +69,7 @@
     <rollingpolicy name="XSMART_rollingpolicy" type="sizewin" maxsize="2097152" maxnum="2"/>
     <rollingpolicy name="TOUCHSTONE_rollingpolicy" type="sizewin" maxsize="2097152" maxnum="2"/>
     <rollingpolicy name="MESH_rollingpolicy" type="sizewin" maxsize="2097152" maxnum="2"/>
-    <rollingpolicy name="MeshService_rollingpolicy" type="sizewin" maxsize="2097152" maxnum="2"/>
+    <rollingpolicy name="MeshService_rollingpolicy" type="sizewin" maxsize="524288" maxnum="2"/>
     <rollingpolicy name="WEBPA_rollingpolicy" type="sizewin" maxsize="2097152" maxnum="2"/>
 	<rollingpolicy name="Seshat_rollingpolicy" type="sizewin" maxsize="2097152" maxnum="2"/>    
    <rollingpolicy name="Speedtest_rollingpolicy" type="sizewin" maxsize="2097152" maxnum="2"/>
