@@ -109,6 +109,7 @@
     <rollingpolicy name="XDSLMANAGER_rollingpolicy" type="sizewin" maxsize="2097152" maxnum="2"/>
     <rollingpolicy name="VLANMANAGER_rollingpolicy" type="sizewin" maxsize="2097152" maxnum="2"/>
     <rollingpolicy name="XTMMANAGER_rollingpolicy" type="sizewin" maxsize="2097152" maxnum="2"/>
+    <rollingpolicy name="TELCOVOICEMANAGER_rollingpolicy" type="sizewin" maxsize="2097152" maxnum="2"/>
 
  <!--   <appender name="stderr" type="stream_env" layout="dated"/>
     <appender name="syslog" type="syslog" layout="basic"/>
@@ -161,7 +162,7 @@
     <appender name="RI_XDSLMANAGERrollingfileappender" type="rollingfile" logdir="/rdklogs/logs/" prefix="XDSLMANAGERLog.txt" layout="comcast_dated" rollingpolicy="XDSLMANAGER_rollingpolicy"/>
     <appender name="RI_VLANMANAGERrollingfileappender" type="rollingfile" logdir="/rdklogs/logs/" prefix="VLANManagerLog.txt" layout="comcast_dated" rollingpolicy="VLANMANAGER_rollingpolicy"/>
     <appender name="RI_XTMMANAGERrollingfileappender" type="rollingfile" logdir="/rdklogs/logs/" prefix="XTMMANAGERLog.txt" layout="comcast_dated" rollingpolicy="XTMMANAGER_rollingpolicy"/>
-
+    <appender name="RI_TELCOVOICEMANAGERrollingfileappender" type="rollingfile" logdir="/rdklogs/logs/" prefix="TELCOVOICEMANAGERLog.txt" layout="comcast_dated" rollingpolicy="TELCOVOICEMANAGER_rollingpolicy"/>
     <!-- <appender name="stdout" type="stream_env" layout="comcast_dated"/> -->
 
     <!--
@@ -245,6 +246,7 @@
     <category name="RI.XDSLMANAGER" priority="debug" appender="RI_XDSLMANAGERrollingfileappender"/>
     <category name="RI.VLANMANAGER" priority="debug" appender="RI_VLANMANAGERrollingfileappender"/>
     <category name="RI.XTMMANAGER" priority="debug" appender="RI_XTMMANAGERrollingfileappender"/>
+    <category name="RI.TELCOVOICEMANAGER" priority="debug" appender="RI_TELCOVOICEMANAGERrollingfileappender"/>
 
     <!--  
         Logging categories available to the Platform are listed below
@@ -375,14 +377,16 @@
      <category name="RI.Stack.TELCOVOIPAGENT" priority="debug" appender="RI_TELCOVOIPAGENTrollingfileappender"/>
 	 <category name="RI.Stack.LOG.RDK.TELCOVOIPAGENT" priority="debug" appender="RI_TELCOVOIPAGENTrollingfileappender"/>
      <category name="RI.Stack.XDSLMANAGER" priority="debug" appender="RI_XDSLMANAGERrollingfileappender"/>
-         <category name="RI.Stack.LOG.RDK.XDSLMANAGER" priority="debug" appender="RI_XDSLMANAGERrollingfileappender"/>
-         <category name="RI.Stack.VLANMANAGER" priority="debug" appender="RI_VLANMANAGERrollingfileappender"/>
+     <category name="RI.Stack.LOG.RDK.XDSLMANAGER" priority="debug" appender="RI_XDSLMANAGERrollingfileappender"/>
+     <category name="RI.Stack.VLANMANAGER" priority="debug" appender="RI_VLANMANAGERrollingfileappender"/>
      <category name="RI.Stack.LOG.RDK.VLANMANAGER" priority="debug" appender="RI_VLANMANAGERrollingfileappender"/>
-         <category name="RI.Stack.XTMMANAGER" priority="debug" appender="RI_XTMMANAGERrollingfileappender"/>
-         <category name="RI.Stack.LOG.RDK.XTMMANAGER" priority="debug" appender="RI_XTMMANAGERrollingfileappender"/>
+     <category name="RI.Stack.XTMMANAGER" priority="debug" appender="RI_XTMMANAGERrollingfileappender"/>
+     <category name="RI.Stack.LOG.RDK.XTMMANAGER" priority="debug" appender="RI_XTMMANAGERrollingfileappender"/>
 
+     <category name="RI.Stack.TELCOVOICEMANAGER" priority="debug" appender="RI_TELCOVOICEMANAGERrollingfileappender"/>
+     <category name="RI.Stack.LOG.RDK.TELCOVOICEMANAGER" priority="debug" appender="RI_TELCOVOICEMANAGERrollingfileappender"/>
      <category name="RI.Stack.BLE" priority="debug" appender="RI_BLErollingfileappender"/>
-        <category name="RI.Stack.LOG.RDK.BLE" priority="debug" appender="RI_BLErollingfileappender"/>
+     <category name="RI.Stack.LOG.RDK.BLE" priority="debug" appender="RI_BLErollingfileappender"/>
 
      <category name="RI.Stack.WEBCONFIG" priority="debug" appender="RI_WEBCONFIGrollingfileappender"/>
      <category name="RI.Stack.LOG.RDK.WEBCONFIG" priority="debug" appender="RI_WEBCONFIGrollingfileappender"/>
