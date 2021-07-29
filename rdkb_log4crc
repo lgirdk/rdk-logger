@@ -105,10 +105,12 @@
     <rollingpolicy name="WANAGENT_rollingpolicy" type="sizewin" maxsize="2097152" maxnum="2"/>
     <rollingpolicy name="WANMANAGER_rollingpolicy" type="sizewin" maxsize="2097152" maxnum="2"/>
     <rollingpolicy name="TELCOVOIPAGENT_rollingpolicy" type="sizewin" maxsize="2097152" maxnum="2"/>
+    <rollingpolicy name="TELCOVOICEMANAGER_rollingpolicy" type="sizewin" maxsize="2097152" maxnum="2"/>
     <rollingpolicy name="WEBCONFIG_rollingpolicy" type="sizewin" maxsize="2097152" maxnum="2"/>
     <rollingpolicy name="XDNS_rollingpolicy" type="sizewin" maxsize="2097152" maxnum="2"/>
     <rollingpolicy name="DSLAGENT_rollingpolicy" type="sizewin" maxsize="2097152" maxnum="2"/>
     <rollingpolicy name="VLANAGENT_rollingpolicy" type="sizewin" maxsize="2097152" maxnum="2"/>
+    <rollingpolicy name="VLANMANAGER_rollingpolicy" type="sizewin" maxsize="2097152" maxnum="2"/>
     <rollingpolicy name="XTMAGENT_rollingpolicy" type="sizewin" maxsize="2097152" maxnum="2"/>
     <rollingpolicy name="CPUPROCANALYZER_rollingpolicy" type="sizewin" maxsize="2097152" maxnum="2"/>
     <rollingpolicy name="HWST_rollingpolicy" type="sizewin" maxsize="2097152" maxnum="2"/>
@@ -161,10 +163,12 @@
     <appender name="RI_WANAGENTrollingfileappender" type="rollingfile" logdir="/rdklogs/logs/" prefix="WANAGENTLog.txt" layout="comcast_dated" rollingpolicy="WANAGENT_rollingpolicy"/>
     <appender name="RI_WANMANAGERrollingfileappender" type="rollingfile" logdir="/rdklogs/logs/" prefix="WANMANAGERLog.txt" layout="comcast_dated" rollingpolicy="WANMANAGER_rollingpolicy"/>
     <appender name="RI_TELCOVOIPAGENTrollingfileappender" type="rollingfile" logdir="/rdklogs/logs/" prefix="TELCOVOIPAGENTLog.txt" layout="comcast_dated" rollingpolicy="TELCOVOIPAGENT_rollingpolicy"/>
+    <appender name="RI_TELCOVOICEMANAGERrollingfileappender" type="rollingfile" logdir="/rdklogs/logs/" prefix="TELCOVOICEMANAGERLog.txt" layout="comcast_dated" rollingpolicy="TELCOVOICEMANAGER_rollingpolicy"/>
     <appender name="RI_WEBCONFIGrollingfileappender" type="rollingfile" logdir="/rdklogs/logs/" prefix="WEBCONFIGlog.txt" layout="comcast_dated" rollingpolicy="WEBCONFIG_rollingpolicy"/>
     <appender name="RI_XDNSrollingfileappender" type="rollingfile" logdir="/rdklogs/logs/" prefix="XDNSlog.txt" layout="comcast_dated" rollingpolicy="XDNS_rollingpolicy"/>
     <appender name="RI_DSLAGENTrollingfileappender" type="rollingfile" logdir="/rdklogs/logs/" prefix="DSLAGENTLog.txt" layout="comcast_dated" rollingpolicy="DSLAGENT_rollingpolicy"/>
     <appender name="RI_VLANAGENTrollingfileappender" type="rollingfile" logdir="/rdklogs/logs/" prefix="VLANAGENTLog.txt" layout="comcast_dated" rollingpolicy="VLANAGENT_rollingpolicy"/>
+    <appender name="RI_VLANMANAGERrollingfileappender" type="rollingfile" logdir="/rdklogs/logs/" prefix="VLANMANAGERLog.txt" layout="comcast_dated" rollingpolicy="VLANMANAGER_rollingpolicy"/>
     <appender name="RI_XTMAGENTrollingfileappender" type="rollingfile" logdir="/rdklogs/logs/" prefix="XTMAGENTLog.txt" layout="comcast_dated" rollingpolicy="XTMAGENT_rollingpolicy"/>
     <appender name="RI_CPUPROCANALYZERrollingfileappender" type="rollingfile" logdir="/rdklogs/logs/" prefix="CPUPROCANALYZERlog.txt" layout="comcast_dated" rollingpolicy="CPUPROCANALYZER_rollingpolicy"/>
     <appender name="RI_HWSTrollingfileappender" type="rollingfile" logdir="/rdklogs/logs/" prefix="HWSTLog.txt" layout="comcast_dated" rollingpolicy="HWST_rollingpolicy"/>
@@ -249,10 +253,12 @@
     <category name="RI.WANAGENT" priority="debug" appender="RI_WANAGENTrollingfileappender"/>
     <category name="RI.WANMANAGER" priority="debug" appender="RI_WANMANAGERrollingfileappender"/>
     <category name="RI.TELCOVOIPAGENT" priority="debug" appender="RI_TELCOVOIPAGENTrollingfileappender"/>
+    <category name="RI.TELCOVOICEMANAGER" priority="debug" appender="RI_TELCOVOICEMANAGERrollingfileappender"/>
     <category name="RI.WEBCONFIG" priority="debug" appender="RI_WEBCONFIGrollingfileappender"/>
     <category name="RI.XDNS" priority="debug" appender="RI_XDNSrollingfileappender"/>
     <category name="RI.DSLAGENT" priority="debug" appender="RI_DSLAGENTrollingfileappender"/>
     <category name="RI.VLANAGENT" priority="debug" appender="RI_VLANAGENTrollingfileappender"/>
+    <category name="RI.VLANMANAGER" priority="debug" appender="RI_VLANMANAGERrollingfileappender"/>
     <category name="RI.XTMAGENT" priority="debug" appender="RI_XTMAGENTrollingfileappender"/>
     <category name="RI.CPUPROCANALYZER" priority="debug" appender="RI_CPUPROCANALYZERrollingfileappender"/>
     <category name="RI.HWST" priority="debug" appender="RI_HWSTrollingfileappender"/>
@@ -387,10 +393,14 @@
          <category name="RI.Stack.LOG.RDK.WANMANAGER" priority="debug" appender="RI_WANMANAGERrollingfileappender"/>
      <category name="RI.Stack.TELCOVOIPAGENT" priority="debug" appender="RI_TELCOVOIPAGENTrollingfileappender"/>
 	 <category name="RI.Stack.LOG.RDK.TELCOVOIPAGENT" priority="debug" appender="RI_TELCOVOIPAGENTrollingfileappender"/>
+     <category name="RI.Stack.TELCOVOICEMANAGER" priority="debug" appender="RI_TELCOVOICEMANAGERrollingfileappender"/>
+	 <category name="RI.Stack.LOG.RDK.TELCOVOICEMANAGER" priority="debug" appender="RI_TELCOVOICEMANAGERrollingfileappender"/>
      <category name="RI.Stack.DSLAGENT" priority="debug" appender="RI_DSLAGENTrollingfileappender"/>
          <category name="RI.Stack.LOG.RDK.DSLAGENT" priority="debug" appender="RI_DSLAGENTrollingfileappender"/>
      <category name="RI.Stack.VLANAGENT" priority="debug" appender="RI_VLANAGENTrollingfileappender"/>
      <category name="RI.Stack.LOG.RDK.VLANAGENT" priority="debug" appender="RI_VLANAGENTrollingfileappender"/>
+     <category name="RI.Stack.VLANMANAGER" priority="debug" appender="RI_VLANMANAGERrollingfileappender"/>
+        <category name="RI.Stack.LOG.RDK.VLANMANAGER" priority="debug" appender="RI_VLANMANAGERrollingfileappender"/>
      <category name="RI.Stack.XTMAGENT" priority="debug" appender="RI_XTMAGENTrollingfileappender"/>
          <category name="RI.Stack.LOG.RDK.XTMAGENT" priority="debug" appender="RI_XTMAGENTrollingfileappender"/>
 
