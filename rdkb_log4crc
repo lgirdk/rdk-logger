@@ -153,8 +153,8 @@
     <appender name="RI_AKERrollingfileappender" type="rollingfile" logdir="/rdklogs/logs/" prefix="AKERlog.txt" layout="comcast_dated" rollingpolicy="AKER_rollingpolicy"/>
     <appender name="RI_PARODUSrollingfileappender" type="rollingfile" logdir="/rdklogs/logs/" prefix="PARODUSlog.txt" layout="comcast_dated" rollingpolicy="PARODUS_rollingpolicy"/>
     <appender name="RI_RTMESSAGErollingfileappender" type="rollingfile" logdir="/rdklogs/logs/" prefix="RTMessagelog.txt" layout="comcast_dated" rollingpolicy="RTMESSAGE_rollingpolicy"/>
-    <appender name="RI_GWPROVETHWANrollingfileappender" type="rollingfile" logdir="/rdklogs/logs/" prefix="GWPROVETHWANLog.txt" layout="comcast_dated" rollingpolicy="RTMESSAGE_rollingpolicy"/>
-    <appender name="RI_GWPROVGPONWANrollingfileappender" type="rollingfile" logdir="/rdklogs/logs/" prefix="GWPROVGPONWANLog.txt" layout="comcast_dated" rollingpolicy="RTMESSAGE_rollingpolicy"/>
+    <appender name="RI_GWPROVETHWANrollingfileappender" type="rollingfile" logdir="/rdklogs/logs/" prefix="GWPROVETHWANLog.txt" layout="comcast_dated" rollingpolicy="GWPROVETHWAN_rollingpolicy"/>
+    <appender name="RI_GWPROVGPONWANrollingfileappender" type="rollingfile" logdir="/rdklogs/logs/" prefix="GWPROVGPONWANLog.txt" layout="comcast_dated" rollingpolicy="GWPROVGPONWAN_rollingpolicy"/>
     <appender name="RI_LIBSYSCALLWRAPPERrollingfileappender" type="rollingfile" logdir="/rdklogs/logs/" prefix="LIBSYSCALLWRAPPERLog.txt" layout="comcast_dated" rollingpolicy="LIBSYSCALLWRAPPER_rollingpolicy"/>
     <appender name="RI_ADVSECrollingfileappender" type="rollingfile" logdir="/rdklogs/logs/" prefix="ADVSEClog.txt" layout="comcast_dated" rollingpolicy="ADVSEC_rollingpolicy"/>
     <appender name="RI_Speedtestrollingfileappender" type="rollingfile" logdir="/rdklogs/logs/" prefix="SpeedtestLog.txt" layout="comcast_dated" rollingpolicy="Speedtest_rollingpolicy"/>
