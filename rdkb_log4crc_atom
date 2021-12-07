@@ -63,22 +63,22 @@
     -->
 
     <!--<rollingpolicy name="RI_rollingpolicy" type="sizewin" maxsize="10485760" maxnum="10"/>-->
-    <rollingpolicy name="CR_rollingpolicy" type="sizewin" maxsize="2097152" maxnum="2"/>
-    <rollingpolicy name="WIFI_rollingpolicy" type="sizewin" maxsize="2097152" maxnum="2"/>
-    <rollingpolicy name="CSCWFMRXM_rollingpolicy" type="sizewin" maxsize="2097152" maxnum="2"/>
-    <rollingpolicy name="CSCWFMBRG_rollingpolicy" type="sizewin" maxsize="2097152" maxnum="2"/>
-    <rollingpolicy name="CSCWFMRBP_rollingpolicy" type="sizewin" maxsize="2097152" maxnum="2"/>
-    <rollingpolicy name="CSCWFMMON_rollingpolicy" type="sizewin" maxsize="2097152" maxnum="2"/>
-    <rollingpolicy name="Harvester_rollingpolicy" type="sizewin" maxsize="2097152" maxnum="2"/>
-    <rollingpolicy name="TOUCHSTONE_rollingpolicy" type="sizewin" maxsize="2097152" maxnum="2"/>
-    <rollingpolicy name="MESH_rollingpolicy" type="sizewin" maxsize="2097152" maxnum="2"/>
-    <rollingpolicy name="MeshService_rollingpolicy" type="sizewin" maxsize="2097152" maxnum="2"/>
-    <rollingpolicy name="WEBPA_rollingpolicy" type="sizewin" maxsize="2097152" maxnum="2"/>
-	<rollingpolicy name="Seshat_rollingpolicy" type="sizewin" maxsize="2097152" maxnum="2"/>    
-   <rollingpolicy name="Speedtest_rollingpolicy" type="sizewin" maxsize="2097152" maxnum="2"/>
-   <rollingpolicy name="BLE_rollingpolicy" type="sizewin" maxsize="2097152" maxnum="2"/>
-   <rollingpolicy name="T2_rollingpolicy" type="sizewin" maxsize="2097152" maxnum="2"/>
-   <rollingpolicy name="WEBCONFIG_rollingpolicy" type="sizewin" maxsize="2097152" maxnum="2"/>
+    <rollingpolicy name="CR_rollingpolicy" type="sizewin" maxsize="102400" maxnum="2"/>
+    <rollingpolicy name="WIFI_rollingpolicy" type="sizewin" maxsize="102400" maxnum="2"/>
+    <rollingpolicy name="CSCWFMRXM_rollingpolicy" type="sizewin" maxsize="102400" maxnum="2"/>
+    <rollingpolicy name="CSCWFMBRG_rollingpolicy" type="sizewin" maxsize="102400" maxnum="2"/>
+    <rollingpolicy name="CSCWFMRBP_rollingpolicy" type="sizewin" maxsize="102400" maxnum="2"/>
+    <rollingpolicy name="CSCWFMMON_rollingpolicy" type="sizewin" maxsize="102400" maxnum="2"/>
+    <rollingpolicy name="Harvester_rollingpolicy" type="sizewin" maxsize="102400" maxnum="2"/>
+    <rollingpolicy name="TOUCHSTONE_rollingpolicy" type="sizewin" maxsize="102400" maxnum="2"/>
+    <rollingpolicy name="MESH_rollingpolicy" type="sizewin" maxsize="102400" maxnum="2"/>
+    <rollingpolicy name="MeshService_rollingpolicy" type="sizewin" maxsize="102400" maxnum="2"/>
+    <rollingpolicy name="WEBPA_rollingpolicy" type="sizewin" maxsize="102400" maxnum="2"/>
+	<rollingpolicy name="Seshat_rollingpolicy" type="sizewin" maxsize="102400" maxnum="2"/>    
+   <rollingpolicy name="Speedtest_rollingpolicy" type="sizewin" maxsize="102400" maxnum="2"/>
+   <rollingpolicy name="BLE_rollingpolicy" type="sizewin" maxsize="102400" maxnum="2"/>
+   <rollingpolicy name="T2_rollingpolicy" type="sizewin" maxsize="102400" maxnum="2"/>
+   <rollingpolicy name="WEBCONFIG_rollingpolicy" type="sizewin" maxsize="102400" maxnum="2"/>
  <!--   <appender name="stderr" type="stream_env" layout="dated"/>
     <appender name="syslog" type="syslog" layout="basic"/>
     <appender name="socket" type="socket_env" layout="basic"/> -->
