@@ -95,7 +95,7 @@
     <rollingpolicy name="Seshat_rollingpolicy" type="sizewin" maxsize="500" maxnum="2"/>
     <rollingpolicy name="AKER_rollingpolicy" type="sizewin" maxsize="500" maxnum="2"/>
     <rollingpolicy name="PARODUS_rollingpolicy" type="sizewin" maxsize="500" maxnum="2"/>
-    <rollingpolicy name="GWPROVETHWAN_rollingpolicy" type="sizewin" maxsize="5000" maxnum="2"/>
+    <rollingpolicy name="GWPROVETHWAN_rollingpolicy" type="sizewin" maxsize="100000" maxnum="2"/>
     <rollingpolicy name="GWPROVGPONWAN_rollingpolicy" type="sizewin" maxsize="5000" maxnum="2"/>
     <rollingpolicy name="LIBSYSCALLWRAPPER_rollingpolicy" type="sizewin" maxsize="1000" maxnum="2"/>
     <rollingpolicy name="ADVSEC_rollingpolicy" type="sizewin" maxsize="500" maxnum="2"/>
