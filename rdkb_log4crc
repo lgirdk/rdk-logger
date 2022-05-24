@@ -112,7 +112,7 @@
     <rollingpolicy name="CPUPROCANALYZER_rollingpolicy" type="sizewin" maxsize="100000" maxnum="2"/>
     <rollingpolicy name="HWST_rollingpolicy" type="sizewin" maxsize="100000" maxnum="2"/>
     <rollingpolicy name="OVSAGENT_rollingpolicy" type="sizewin" maxsize="1000" maxnum="2"/>
-    <rollingpolicy name="WANMANAGER_rollingpolicy" type="sizewin" maxsize="1000" maxnum="2"/>
+    <rollingpolicy name="WANMANAGER_rollingpolicy" type="sizewin" maxsize="100000" maxnum="2"/>
     <rollingpolicy name="FWUPGRADEMANAGER_rollingpolicy" type="sizewin" maxsize="1000" maxnum="2"/>
     <rollingpolicy name="CELLULARMANAGER_rollingpolicy" type="sizewin" maxsize="1000" maxnum="2"/>
     <rollingpolicy name="INTERDEVICEMANAGER_rollingpolicy" type="sizewin" maxsize="1000" maxnum="2"/>
