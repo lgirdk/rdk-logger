@@ -81,7 +81,7 @@
     <rollingpolicy name="FU_rollingpolicy" type="sizewin" maxsize="500" maxnum="2"/>
     <rollingpolicy name="HOTSPOT_rollingpolicy" type="sizewin" maxsize="100000" maxnum="2"/>
     <rollingpolicy name="DHCPSNOOP_rollingpolicy" type="sizewin" maxsize="500" maxnum="2"/>
-    <rollingpolicy name="NOTIFY_rollingpolicy" type="sizewin" maxsize="500" maxnum="2"/>
+    <rollingpolicy name="NOTIFY_rollingpolicy" type="sizewin" maxsize="50000" maxnum="2"/>
     <rollingpolicy name="WECB_rollingpolicy" type="sizewin" maxsize="500" maxnum="2"/>
     <rollingpolicy name="WECBMASTER_rollingpolicy" type="sizewin" maxsize="500" maxnum="2"/>
     <rollingpolicy name="TOUCHSTONE_rollingpolicy" type="sizewin" maxsize="500" maxnum="2"/>
@@ -113,7 +113,7 @@
     <rollingpolicy name="HWST_rollingpolicy" type="sizewin" maxsize="100000" maxnum="2"/>
     <rollingpolicy name="OVSAGENT_rollingpolicy" type="sizewin" maxsize="1000" maxnum="2"/>
     <rollingpolicy name="WANMANAGER_rollingpolicy" type="sizewin" maxsize="100000" maxnum="2"/>
-    <rollingpolicy name="FWUPGRADEMANAGER_rollingpolicy" type="sizewin" maxsize="1000" maxnum="2"/>
+    <rollingpolicy name="FWUPGRADEMANAGER_rollingpolicy" type="sizewin" maxsize="50000" maxnum="2"/>
     <rollingpolicy name="CELLULARMANAGER_rollingpolicy" type="sizewin" maxsize="1000" maxnum="2"/>
     <rollingpolicy name="INTERDEVICEMANAGER_rollingpolicy" type="sizewin" maxsize="1000" maxnum="2"/>
 
