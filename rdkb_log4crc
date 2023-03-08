@@ -68,6 +68,9 @@
     <rollingpolicy name="PAM_rollingpolicy" type="sizewin" maxsize="2097152" maxnum="2"/>
     <rollingpolicy name="PSM_rollingpolicy" type="sizewin" maxsize="2097152" maxnum="2"/>
     <rollingpolicy name="MOCA_rollingpolicy" type="sizewin" maxsize="2097152" maxnum="2"/>
+    <rollingpolicy name="IHC_rollingpolicy" type="sizewin" maxsize="2097152" maxnum="2"/>
+    <rollingpolicy name="IHCMGMT_rollingpolicy" type="sizewin" maxsize="2097152" maxnum="2"/>
+    <rollingpolicy name="IHCVOIP_rollingpolicy" type="sizewin" maxsize="2097152" maxnum="2"/>
     <rollingpolicy name="CM_rollingpolicy" type="sizewin" maxsize="2097152" maxnum="2"/>
     <rollingpolicy name="CR_rollingpolicy" type="sizewin" maxsize="2097152" maxnum="2"/>
     <rollingpolicy name="Harvester_rollingpolicy" type="sizewin" maxsize="2097152" maxnum="2"/>
@@ -143,6 +146,9 @@
     <appender name="RI_PAMrollingfileappender" type="rollingfile" logdir="/rdklogs/logs/" prefix="PAMlog.txt" layout="comcast_dated" rollingpolicy="PAM_rollingpolicy"/>
     <appender name="RI_PSMrollingfileappender" type="rollingfile" logdir="/rdklogs/logs/" prefix="PSMlog.txt" layout="comcast_dated" rollingpolicy="PSM_rollingpolicy"/>
     <appender name="RI_MOCArollingfileappender" type="rollingfile" logdir="/rdklogs/logs/" prefix="MOCAlog.txt" layout="comcast_dated" rollingpolicy="MOCA_rollingpolicy"/>
+    <appender name="RI_IHCrollingfileappender" type="rollingfile" logdir="/rdklogs/logs/" prefix="IHCLog.txt" layout="comcast_dated" rollingpolicy="IHC_rollingpolicy"/>
+    <appender name="RI_IHCMGMTrollingfileappender" type="rollingfile" logdir="/rdklogs/logs/" prefix="IHCMGMTLog.txt" layout="comcast_dated" rollingpolicy="IHCMGMT_rollingpolicy"/>
+    <appender name="RI_IHCVOIProllingfileappender" type="rollingfile" logdir="/rdklogs/logs/" prefix="IHCVOIPLog.txt" layout="comcast_dated" rollingpolicy="IHCVOIP_rollingpolicy"/>
     <appender name="RI_CMrollingfileappender" type="rollingfile" logdir="/rdklogs/logs/" prefix="CMlog.txt" layout="comcast_dated" rollingpolicy="CM_rollingpolicy"/>
     <appender name="RI_CRrollingfileappender" type="rollingfile" logdir="/rdklogs/logs/" prefix="CRlog.txt" layout="comcast_dated" rollingpolicy="CR_rollingpolicy"/>
     <appender name="RI_IMAGEHEALTHCHECKERrollingfileappender" type="rollingfile" logdir="/rdklogs/logs/" prefix="IMAGEHEALTHCHECKERlog.txt" layout="comcast_dated" rollingpolicy="IMAGEHEALTHCHECKER_rollingpolicy"/>
@@ -250,6 +256,9 @@
 	<category name="RI.WEBPA" priority="debug" appender="RI_WEBPArollingfileappender"/>
 	<category name="RI.PAM" priority="debug" appender="RI_PAMrollingfileappender"/>
 	<category name="RI.PSM" priority="debug" appender="RI_PSMrollingfileappender"/>
+	<category name="RI.IHC" priority="debug" appender="RI_IHCrollingfileappender"/>
+	<category name="RI.IHCMGMT" priority="debug" appender="RI_IHCMGMTrollingfileappender"/>
+	<category name="RI.IHCVOIP" priority="debug" appender="RI_IHCVOIProllingfileappender"/>
 	<category name="RI.MOCA" priority="debug" appender="RI_MOCArollingfileappender"/>  
 	<category name="RI.CR" priority="debug" appender="RI_CRrollingfileappender"/> 
 	<category name="RI.MTA" priority="debug" appender="RI_MTArollingfileappender"/> 
@@ -429,6 +438,12 @@
 
     <category name="RI.Stack.IMAGEHEALTHCHECKER" priority="debug" appender="RI_IMAGEHEALTHCHECKERrollingfileappender"/>
     <category name="RI.Stack.LOG.RDK.IMAGEHEALTHCHECKER" priority="debug" appender="RI_IMAGEHEALTHCHECKERrollingfileappender"/>
+    <category name="RI.Stack.IHC" priority="debug" appender="RI_IHCrollingfileappender"/>
+    <category name="RI.Stack.LOG.RDK.IHC" priority="debug" appender="RI_IHCrollingfileappender"/>
+    <category name="RI.Stack.IHCMGMT" priority="debug" appender="RI_IHCMGMTrollingfileappender"/>
+    <category name="RI.Stack.LOG.RDK.IHCMGMT" priority="debug" appender="RI_IHCMGMTrollingfileappender"/>
+    <category name="RI.Stack.IHCVOIP" priority="debug" appender="RI_IHCVOIProllingfileappender"/>
+    <category name="RI.Stack.LOG.RDK.IHCVOIP" priority="debug" appender="RI_IHCVOIProllingfileappender"/>
 
     <category name="RI.Stack.Seshat" priority="debug" appender="RI_Seshatrollingfileappender"/>
     <category name="RI.Stack.LOG.RDK.Seshat" priority="debug" appender="RI_Seshatrollingfileappender"/>
