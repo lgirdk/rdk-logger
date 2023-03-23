@@ -90,7 +90,7 @@
     <rollingpolicy name="PWRMGR_rollingpolicy" type="sizewin" maxsize="5000" maxnum="2"/>
     <rollingpolicy name="MESH_rollingpolicy" type="sizewin" maxsize="300000" maxnum="2"/>
     <rollingpolicy name="T2_rollingpolicy" type="sizewin" maxsize="300000" maxnum="2"/>
-    <rollingpolicy name="MeshService_rollingpolicy" type="sizewin" maxsize="300000" maxnum="2"/>
+    <rollingpolicy name="MeshService_rollingpolicy" type="sizewin" maxsize="600000" maxnum="2"/>
     <rollingpolicy name="ETHAGENT_rollingpolicy" type="sizewin" maxsize="300000" maxnum="2"/>
     <rollingpolicy name="DHCPMGR_rollingpolicy" type="sizewin" maxsize="20000" maxnum="2"/>
     <rollingpolicy name="GWPROV_rollingpolicy" type="sizewin" maxsize="300000" maxnum="2"/>
