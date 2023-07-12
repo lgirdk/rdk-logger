@@ -63,7 +63,7 @@
     -->
 
     <!--<rollingpolicy name="RI_rollingpolicy" type="sizewin" maxsize="10485760" maxnum="10"/>-->
-    <rollingpolicy name="TR69_rollingpolicy" type="sizewin" maxsize="1000000" maxnum="2"/>
+    <rollingpolicy name="TR69_rollingpolicy" type="sizewin" maxsize="300000" maxnum="2"/>
     <rollingpolicy name="WEBPA_rollingpolicy" type="sizewin" maxsize="500" maxnum="2"/>
     <rollingpolicy name="PAM_rollingpolicy" type="sizewin" maxsize="300000" maxnum="2"/>
     <rollingpolicy name="PSM_rollingpolicy" type="sizewin" maxsize="300000" maxnum="2"/>
@@ -71,13 +71,13 @@
     <rollingpolicy name="IHC_rollingpolicy" type="sizewin" maxsize="100000" maxnum="2"/>
     <rollingpolicy name="IHCMGMT_rollingpolicy" type="sizewin" maxsize="100000" maxnum="2"/>
     <rollingpolicy name="IHCVOIP_rollingpolicy" type="sizewin" maxsize="100000" maxnum="2"/>
-    <rollingpolicy name="CM_rollingpolicy" type="sizewin" maxsize="1000000" maxnum="2"/>
+    <rollingpolicy name="CM_rollingpolicy" type="sizewin" maxsize="300000" maxnum="2"/>
     <rollingpolicy name="CR_rollingpolicy" type="sizewin" maxsize="300000" maxnum="2"/>
     <rollingpolicy name="Harvester_rollingpolicy" type="sizewin" maxsize="500" maxnum="2"/>
     <rollingpolicy name="RM_rollingpolicy" type="sizewin" maxsize="500" maxnum="2"/>
     <rollingpolicy name="MTA_rollingpolicy" type="sizewin" maxsize="10000" maxnum="2"/>
     <rollingpolicy name="TDM_rollingpolicy" type="sizewin" maxsize="5000" maxnum="2"/>
-    <rollingpolicy name="WIFI_rollingpolicy" type="sizewin" maxsize="1000000" maxnum="2"/>
+    <rollingpolicy name="WIFI_rollingpolicy" type="sizewin" maxsize="300000" maxnum="2"/>
     <rollingpolicy name="CSCWFMRXM_rollingpolicy" type="sizewin" maxsize="1000" maxnum="2"/>
     <rollingpolicy name="CSCWFMBRG_rollingpolicy" type="sizewin" maxsize="1000" maxnum="2"/>
     <rollingpolicy name="CSCWFMRBP_rollingpolicy" type="sizewin" maxsize="1000" maxnum="2"/>
@@ -96,7 +96,7 @@
     <rollingpolicy name="PWRMGR_rollingpolicy" type="sizewin" maxsize="5000" maxnum="2"/>
     <rollingpolicy name="MESH_rollingpolicy" type="sizewin" maxsize="300000" maxnum="2"/>
     <rollingpolicy name="T2_rollingpolicy" type="sizewin" maxsize="300000" maxnum="2"/>
-    <rollingpolicy name="MeshService_rollingpolicy" type="sizewin" maxsize="5000000" maxnum="2"/>
+    <rollingpolicy name="MeshService_rollingpolicy" type="sizewin" maxsize="600000" maxnum="2"/>
     <rollingpolicy name="ETHAGENT_rollingpolicy" type="sizewin" maxsize="300000" maxnum="2"/>
     <rollingpolicy name="DHCPMGR_rollingpolicy" type="sizewin" maxsize="20000" maxnum="2"/>
     <rollingpolicy name="GWPROV_rollingpolicy" type="sizewin" maxsize="300000" maxnum="2"/>
@@ -122,7 +122,7 @@
     <rollingpolicy name="CPUPROCANALYZER_rollingpolicy" type="sizewin" maxsize="300000" maxnum="2"/>
     <rollingpolicy name="HWST_rollingpolicy" type="sizewin" maxsize="300000" maxnum="2"/>
     <rollingpolicy name="OVSAGENT_rollingpolicy" type="sizewin" maxsize="1000" maxnum="2"/>
-    <rollingpolicy name="WANMANAGER_rollingpolicy" type="sizewin" maxsize="1000000" maxnum="2"/>
+    <rollingpolicy name="WANMANAGER_rollingpolicy" type="sizewin" maxsize="300000" maxnum="2"/>
     <rollingpolicy name="WANCNCTVTYCHK_rollingpolicy" type="sizewin" maxsize="1000" maxnum="2"/>
     <rollingpolicy name="FWUPGRADEMANAGER_rollingpolicy" type="sizewin" maxsize="300000" maxnum="2"/>
     <rollingpolicy name="BATTERYMANAGER_rollingpolicy" type="sizewin" maxsize="1000" maxnum="2"/>
