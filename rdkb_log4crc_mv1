@@ -63,7 +63,7 @@
     -->
 
     <!--<rollingpolicy name="RI_rollingpolicy" type="sizewin" maxsize="10485760" maxnum="10"/>-->
-    <rollingpolicy name="TR69_rollingpolicy" type="sizewin" maxsize="1000000" maxnum="2"/>
+    <rollingpolicy name="TR69_rollingpolicy" type="sizewin" maxsize="300000" maxnum="2"/>
     <rollingpolicy name="WEBPA_rollingpolicy" type="sizewin" maxsize="500" maxnum="2"/>
     <rollingpolicy name="PAM_rollingpolicy" type="sizewin" maxsize="300000" maxnum="2"/>
     <rollingpolicy name="PSM_rollingpolicy" type="sizewin" maxsize="300000" maxnum="2"/>
@@ -71,13 +71,13 @@
     <rollingpolicy name="IHC_rollingpolicy" type="sizewin" maxsize="100000" maxnum="2"/>
     <rollingpolicy name="IHCMGMT_rollingpolicy" type="sizewin" maxsize="100000" maxnum="2"/>
     <rollingpolicy name="IHCVOIP_rollingpolicy" type="sizewin" maxsize="100000" maxnum="2"/>
-    <rollingpolicy name="CM_rollingpolicy" type="sizewin" maxsize="1000000" maxnum="2"/>
+    <rollingpolicy name="CM_rollingpolicy" type="sizewin" maxsize="300000" maxnum="2"/>
     <rollingpolicy name="CR_rollingpolicy" type="sizewin" maxsize="300000" maxnum="2"/>
     <rollingpolicy name="Harvester_rollingpolicy" type="sizewin" maxsize="500" maxnum="2"/>
     <rollingpolicy name="RM_rollingpolicy" type="sizewin" maxsize="500" maxnum="2"/>
     <rollingpolicy name="MTA_rollingpolicy" type="sizewin" maxsize="10000" maxnum="2"/>
     <rollingpolicy name="TDM_rollingpolicy" type="sizewin" maxsize="5000" maxnum="2"/>
-    <rollingpolicy name="WIFI_rollingpolicy" type="sizewin" maxsize="1000000" maxnum="2"/>
+    <rollingpolicy name="WIFI_rollingpolicy" type="sizewin" maxsize="300000" maxnum="2"/>
     <rollingpolicy name="CSCWFMRXM_rollingpolicy" type="sizewin" maxsize="1000" maxnum="2"/>
     <rollingpolicy name="CSCWFMBRG_rollingpolicy" type="sizewin" maxsize="1000" maxnum="2"/>
     <rollingpolicy name="CSCWFMRBP_rollingpolicy" type="sizewin" maxsize="1000" maxnum="2"/>
@@ -89,13 +89,14 @@
     <rollingpolicy name="HOTSPOT_rollingpolicy" type="sizewin" maxsize="300000" maxnum="2"/>
     <rollingpolicy name="DHCPSNOOP_rollingpolicy" type="sizewin" maxsize="500" maxnum="2"/>
     <rollingpolicy name="NOTIFY_rollingpolicy" type="sizewin" maxsize="300000" maxnum="2"/>
+    <rollingpolicy name="WECB_rollingpolicy" type="sizewin" maxsize="500" maxnum="2"/>
     <rollingpolicy name="WECBMASTER_rollingpolicy" type="sizewin" maxsize="500" maxnum="2"/>
     <rollingpolicy name="TOUCHSTONE_rollingpolicy" type="sizewin" maxsize="500" maxnum="2"/>
     <rollingpolicy name="FSC_rollingpolicy" type="sizewin" maxsize="500" maxnum="2"/>
     <rollingpolicy name="PWRMGR_rollingpolicy" type="sizewin" maxsize="5000" maxnum="2"/>
     <rollingpolicy name="MESH_rollingpolicy" type="sizewin" maxsize="300000" maxnum="2"/>
     <rollingpolicy name="T2_rollingpolicy" type="sizewin" maxsize="300000" maxnum="2"/>
-    <rollingpolicy name="MeshService_rollingpolicy" type="sizewin" maxsize="5000000" maxnum="2"/>
+    <rollingpolicy name="MeshService_rollingpolicy" type="sizewin" maxsize="600000" maxnum="2"/>
     <rollingpolicy name="ETHAGENT_rollingpolicy" type="sizewin" maxsize="300000" maxnum="2"/>
     <rollingpolicy name="DHCPMGR_rollingpolicy" type="sizewin" maxsize="20000" maxnum="2"/>
     <rollingpolicy name="GWPROV_rollingpolicy" type="sizewin" maxsize="300000" maxnum="2"/>
@@ -114,7 +115,6 @@
     <rollingpolicy name="WANAGENT_rollingpolicy" type="sizewin" maxsize="2000" maxnum="2"/>
     <rollingpolicy name="TELCOVOIPAGENT_rollingpolicy" type="sizewin" maxsize="300000" maxnum="2"/>
     <rollingpolicy name="WEBCONFIG_rollingpolicy" type="sizewin" maxsize="500" maxnum="2"/>
-    <rollingpolicy name="MQTTCM_rollingpolicy" type="sizewin" maxsize="1000" maxnum="2"/>
     <rollingpolicy name="XDNS_rollingpolicy" type="sizewin" maxsize="10000" maxnum="2"/>
     <rollingpolicy name="DSLAGENT_rollingpolicy" type="sizewin" maxsize="1000" maxnum="2"/>
     <rollingpolicy name="VLANAGENT_rollingpolicy" type="sizewin" maxsize="1000" maxnum="2"/>
@@ -122,7 +122,7 @@
     <rollingpolicy name="CPUPROCANALYZER_rollingpolicy" type="sizewin" maxsize="300000" maxnum="2"/>
     <rollingpolicy name="HWST_rollingpolicy" type="sizewin" maxsize="300000" maxnum="2"/>
     <rollingpolicy name="OVSAGENT_rollingpolicy" type="sizewin" maxsize="1000" maxnum="2"/>
-    <rollingpolicy name="WANMANAGER_rollingpolicy" type="sizewin" maxsize="1000000" maxnum="2"/>
+    <rollingpolicy name="WANMANAGER_rollingpolicy" type="sizewin" maxsize="300000" maxnum="2"/>
     <rollingpolicy name="WANCNCTVTYCHK_rollingpolicy" type="sizewin" maxsize="1000" maxnum="2"/>
     <rollingpolicy name="FWUPGRADEMANAGER_rollingpolicy" type="sizewin" maxsize="300000" maxnum="2"/>
     <rollingpolicy name="BATTERYMANAGER_rollingpolicy" type="sizewin" maxsize="1000" maxnum="2"/>
@@ -134,7 +134,6 @@
     <rollingpolicy name="LANMANAGER_rollingpolicy" type="sizewin" maxsize="100000" maxnum="2"/>
     <rollingpolicy name="PLATFORMMANAGER_rollingpolicy" type="sizewin" maxsize="100000" maxnum="2"/>
     <rollingpolicy name="EASYMESHCTL_rollingpolicy" type="sizewin" maxsize="1000" maxnum="2"/>
-    <rollingpolicy name="WEBCONFIGRFC_rollingpolicy" type="sizewin" maxsize="1000" maxnum="2"/>
 
  <!--   <appender name="stderr" type="stream_env" layout="dated"/>
     <appender name="syslog" type="syslog" layout="basic"/>
@@ -168,7 +167,6 @@
     <appender name="RI_HOTSPOTrollingfileappender" type="rollingfile" logdir="/rdklogs/logs/" prefix="Hotspotlog.txt" layout="comcast_dated" rollingpolicy="HOTSPOT_rollingpolicy"/>
     <appender name="RI_DHCPSNOOProllingfileappender" type="rollingfile" logdir="/rdklogs/logs/" prefix="Dhcpsnooplog.txt" layout="comcast_dated" rollingpolicy="DHCPSNOOP_rollingpolicy"/>
     <appender name="RI_NOTIFYrollingfileappender" type="rollingfile" logdir="/rdklogs/logs/" prefix="NOTIFYLog.txt" layout="comcast_dated" rollingpolicy="NOTIFY_rollingpolicy"/>
-    <appender name="RI_WEBCONFIGRFCrollingfileappender" type="rollingfile" logdir="/rdklogs/logs/" prefix="Webconfig_default_rfc.txt" layout="comcast_dated" rollingpolicy="WEBCONFIGRFC_rollingpolicy"/>
     <appender name="RI_WECBrollingfileappender" type="rollingfile" logdir="/rdklogs/logs/" prefix="WECBLog.txt" layout="comcast_dated" rollingpolicy="WECB_rollingpolicy"/>
     <appender name="RI_WECBMASTERrollingfileappender" type="rollingfile" logdir="/rdklogs/logs/" prefix="WECBMASTERLog.txt" layout="comcast_dated" rollingpolicy="WECBMASTER_rollingpolicy"/>
     <appender name="RI_TOUCHSTONErollingfileappender" type="rollingfile" logdir="/rdklogs/logs/" prefix="TouchstoneLog.txt" layout="comcast_dated" rollingpolicy="TOUCHSTONE_rollingpolicy"/>
@@ -194,7 +192,6 @@
     <appender name="RI_WANAGENTrollingfileappender" type="rollingfile" logdir="/rdklogs/logs/" prefix="WANAGENTLog.txt" layout="comcast_dated" rollingpolicy="WANAGENT_rollingpolicy"/>
     <appender name="RI_TELCOVOIPAGENTrollingfileappender" type="rollingfile" logdir="/rdklogs/logs/" prefix="TELCOVOIPAGENTLog.txt" layout="comcast_dated" rollingpolicy="TELCOVOIPAGENT_rollingpolicy"/>
     <appender name="RI_WEBCONFIGrollingfileappender" type="rollingfile" logdir="/rdklogs/logs/" prefix="WEBCONFIGlog.txt" layout="comcast_dated" rollingpolicy="WEBCONFIG_rollingpolicy"/>
-    <appender name="RI_MQTTCMrollingfileappender" type="rollingfile" logdir="/rdklogs/logs/" prefix="MQTTCMLog.txt" layout="comcast_dated" rollingpolicy="MQTTCM_rollingpolicy"/>
     <appender name="RI_XDNSrollingfileappender" type="rollingfile" logdir="/rdklogs/logs/" prefix="XDNSlog.txt" layout="comcast_dated" rollingpolicy="XDNS_rollingpolicy"/>
     <appender name="RI_DSLAGENTrollingfileappender" type="rollingfile" logdir="/rdklogs/logs/" prefix="DSLAGENTLog.txt" layout="comcast_dated" rollingpolicy="DSLAGENT_rollingpolicy"/>
     <appender name="RI_VLANAGENTrollingfileappender" type="rollingfile" logdir="/rdklogs/logs/" prefix="VLANAGENTLog.txt" layout="comcast_dated" rollingpolicy="VLANAGENT_rollingpolicy"/>
@@ -303,7 +300,6 @@
     <category name="RI.WANAGENT" priority="debug" appender="RI_WANAGENTrollingfileappender"/>
     <category name="RI.TELCOVOIPAGENT" priority="debug" appender="RI_TELCOVOIPAGENTrollingfileappender"/>
     <category name="RI.WEBCONFIG" priority="debug" appender="RI_WEBCONFIGrollingfileappender"/>
-    <category name="RI.MQTTCM" priority="debug" appender="RI_MQTTCMrollingfileappender"/>
     <category name="RI.XDNS" priority="debug" appender="RI_XDNSrollingfileappender"/>
     <category name="RI.DSLAGENT" priority="debug" appender="RI_DSLAGENTrollingfileappender"/>
     <category name="RI.VLANAGENT" priority="debug" appender="RI_VLANAGENTrollingfileappender"/>
@@ -323,7 +319,6 @@
     <category name="RI.LANMANAGER" priority="debug" appender="RI_LANMANAGERrollingfileappender"/>
     <category name="RI.PLATFORMMANAGER" priority="debug" appender="RI_PLATFORMMANAGERrollingfileappender"/>
     <category name="RI.EASYMESHCTL" priority="debug" appender="RI_EASYMESHCTLrollingfileappender"/>
-    <category name="RI.WEBCONFIGRFC" priority="debug" appender="RI_WEBCONFIGRFCrollingfileappender"/>
 
     <!--
         Logging categories available to the Platform are listed below
@@ -489,9 +484,6 @@
      <category name="RI.Stack.WEBCONFIG" priority="debug" appender="RI_WEBCONFIGrollingfileappender"/>
      <category name="RI.Stack.LOG.RDK.WEBCONFIG" priority="debug" appender="RI_WEBCONFIGrollingfileappender"/>
 
-    <category name="RI.Stack.MQTTCM" priority="debug" appender="RI_MQTTCMrollingfileappender"/>
-    <category name="RI.Stack.LOG.RDK.MQTTCM" priority="debug" appender="RI_MQTTCMrollingfileappender"/>
-
      <category name="RI.Stack.XDNS" priority="debug" appender="RI_XDNSrollingfileappender"/>
      <category name="RI.Stack.LOG.RDK.XDNS" priority="debug" appender="RI_XDNSrollingfileappender"/>
      
@@ -527,6 +519,4 @@
 
     <category name="RI.Stack.EASYMESHCTL" priority="debug" appender="RI_EASYMESHCTLrollingfileappender"/>
     <category name="RI.Stack.LOG.RDK.EASYMESHCTL" priority="debug" appender="RI_EASYMESHCTLrollingfileappender"/>
-     <category name="RI.Stack.WEBCONFIGRFC" priority="debug" appender="RI_WEBCONFIGRFCrollingfileappender"/>
-	<category name="RI.Stack.LOG.RDK.WEBCONFIGRFC" priority="debug" appender="RI_WEBCONFIGRFCrollingfileappender"/>
 </log4c>
