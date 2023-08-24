@@ -679,8 +679,7 @@ static const char* dated_format_nocr(const log4c_layout_t* layout,
 {
     struct tm tm;
     char timeBuff[40];
-    //localtime_r(&event->evt_timestamp.tv_sec, &tm); /* Use the UTC Time for logging */
-    gmtime_r(&event->evt_timestamp.tv_sec, &tm);
+    localtime_r(&event->evt_timestamp.tv_sec, &tm); /* Use the Local Time for logging */
 
     memset(&timeBuff,0,40);
 
@@ -724,8 +723,7 @@ static const char* comcast_dated_format_nocr(const log4c_layout_t* layout,
     struct tm tm;
     int n = -1;
     char timeBuff[COMCAST_DATAED_BUFF_SIZE] = {0};
-    //localtime_r(&event->evt_timestamp.tv_sec, &tm);  /* Use the UTC Time for logging */
-    gmtime_r(&event->evt_timestamp.tv_sec, &tm);
+    localtime_r(&event->evt_timestamp.tv_sec, &tm);  /* Use the Local Time for logging */
 
     printTime(&tm,timeBuff);
 
