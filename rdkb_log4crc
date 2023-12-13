@@ -132,6 +132,7 @@
     <rollingpolicy name="PLATFORMMANAGER_rollingpolicy" type="sizewin" maxsize="2097152" maxnum="2"/>
     <rollingpolicy name="EASYMESHCTL_rollingpolicy" type="sizewin" maxsize="2097152" maxnum="2"/>
     <rollingpolicy name="WEBCONFIGRFC_rollingpolicy" type="sizewin" maxsize="2097152" maxnum="2"/>
+    <rollingpolicy name="SERVICECTRL_rollingpolicy" type="sizewin" maxsize="2097152" maxnum="2"/>
 
  <!--   <appender name="stderr" type="stream_env" layout="dated"/>
     <appender name="syslog" type="syslog" layout="basic"/>
@@ -208,6 +209,7 @@
    <appender name="RI_LANMANAGERrollingfileappender" type="rollingfile" logdir="/rdklogs/logs/" prefix="LanManagerLog.txt" layout="comcast_dated" rollingpolicy="LANMANAGER_rollingpolicy"/>
    <appender name="RI_PLATFORMMANAGERrollingfileappender" type="rollingfile" logdir="/rdklogs/logs/" prefix="PlatformManager.txt" layout="comcast_dated" rollingpolicy="PLATFORMMANAGER_rollingpolicy"/>
     <appender name="RI_EASYMESHCTLrollingfileappender" type="rollingfile" logdir="/rdklogs/logs/" prefix="EASYMESHCTLLog.txt" layout="comcast_dated" rollingpolicy="EASYMESHCTL_rollingpolicy"/>
+    <appender name="RI_SERVICECTRLrollingfileappender" type="rollingfile" logdir="/rdklogs/logs/" prefix="ServiceCtrlLog.txt" layout="comcast_dated" rollingpolicy="SERVICECTRL_rollingpolicy"/>
     <appender name="stdout" type="stream_env" layout="comcast_dated"/>
 
     <!--
@@ -315,6 +317,7 @@
     <category name="RI.PLATFORMMANAGER" priority="debug" appender="RI_PLATFORMMANAGERrollingfileappender"/>
     <category name="RI.EASYMESHCTL" priority="debug" appender="RI_EASYMESHCTLrollingfileappender"/>
     <category name="RI.WEBCONFIGRFC" priority="debug" appender="RI_WEBCONFIGRFCrollingfileappender"/>
+    <category name="RI.SERVICECTRL" priority="debug" appender="RI_SERVICECTRLrollingfileappender"/>
 
     <!--
         Logging categories available to the Platform are listed below
@@ -514,4 +517,6 @@
     <category name="RI.Stack.LOG.RDK.EASYMESHCTL" priority="debug" appender="RI_EASYMESHCTLrollingfileappender"/>
      <category name="RI.Stack.WEBCONFIGRFC" priority="debug" appender="RI_WEBCONFIGRFCrollingfileappender"/>
 	<category name="RI.Stack.LOG.RDK.WEBCONFIGRFC" priority="debug" appender="RI_WEBCONFIGRFCrollingfileappender"/>
+     <category name="RI.Stack.SERVICECTRL" priority="debug" appender="RI_SERVICECTRLrollingfileappender"/>
+     <category name="RI.Stack.LOG.RDK.SERVICECTRL" priority="debug" appender="RI_SERVICECTRLrollingfileappender"/>
 </log4c>
