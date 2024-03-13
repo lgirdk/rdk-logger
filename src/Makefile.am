@@ -19,7 +19,7 @@
 
 AM_CPPFLAGS = -pthread -Wall
 lib_LTLIBRARIES = librdkloggers.la
-librdkloggers_la_SOURCES = rdk_debug.c rdk_debug_priv.c rdk_dynamic_logger.c rdk_logger_init.c rdk_logger_util.c rdk_logger_milestone.c
+librdkloggers_la_SOURCES = rdk_debug.c rdk_debug_priv.c rdk_dynamic_logger.c rdk_logger_init.c rdk_logger_util.c rdk_logger_milestone.cpp
 if IS_ONBOARDLOG_ENABLED
 librdkloggers_la_SOURCES += rdk_logger_onboard.c
 endif
