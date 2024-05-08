@@ -64,6 +64,7 @@
 
     <!--<rollingpolicy name="RI_rollingpolicy" type="sizewin" maxsize="10485760" maxnum="10"/>-->
     <rollingpolicy name="TR69_rollingpolicy" type="sizewin" maxsize="2097152" maxnum="2"/>
+    <rollingpolicy name="MWO_rollingpolicy" type="sizewin" maxsize="2097152" maxnum="2"/>
     <rollingpolicy name="WEBPA_rollingpolicy" type="sizewin" maxsize="2097152" maxnum="2"/>
     <rollingpolicy name="PAM_rollingpolicy" type="sizewin" maxsize="2097152" maxnum="2"/>
     <rollingpolicy name="PSM_rollingpolicy" type="sizewin" maxsize="2097152" maxnum="2"/>
@@ -143,6 +144,7 @@
   <!--  <appender name="/rdklogs/rdk_log.txt" type="stream_env_plus_stdout"  layout="dated" />-->
     
     <appender name="RI_TR69rollingfileappender" type="rollingfile" logdir="/rdklogs/logs/" prefix="TR69log.txt" layout="comcast_dated" rollingpolicy="TR69_rollingpolicy"/>
+    <appender name="RI_MWOrollingfileappender" type="rollingfile" logdir="/rdklogs/logs/" prefix="MWO.log" layout="comcast_dated" rollingpolicy="MWO_rollingpolicy"/>
     <appender name="RI_WEBPArollingfileappender" type="rollingfile" logdir="/rdklogs/logs/" prefix="WEBPAlog.txt" layout="comcast_dated" rollingpolicy="WEBPA_rollingpolicy"/>
     <appender name="RI_PAMrollingfileappender" type="rollingfile" logdir="/rdklogs/logs/" prefix="PAMlog.txt" layout="comcast_dated" rollingpolicy="PAM_rollingpolicy"/>
     <appender name="RI_PSMrollingfileappender" type="rollingfile" logdir="/rdklogs/logs/" prefix="PSMlog.txt" layout="comcast_dated" rollingpolicy="PSM_rollingpolicy"/>
@@ -255,6 +257,7 @@
     
     	<!--<category name="RI" priority="debug" appender="RI_rollingfileappender"/>-->
 	<category name="RI.TR69" priority="debug" appender="RI_TR69rollingfileappender"/>
+        <category name="RI.MWO" priority="debug" appender="RI_MWOrollingfileappender"/>
 	<category name="RI.WEBPA" priority="debug" appender="RI_WEBPArollingfileappender"/>
 	<category name="RI.PAM" priority="debug" appender="RI_PAMrollingfileappender"/>
 	<category name="RI.PSM" priority="debug" appender="RI_PSMrollingfileappender"/>
@@ -349,6 +352,9 @@
     <!--	<category name="RI.Stack.LOG" priority="debug" appender="RI_rollingfileappender"/>  
     	<category name="RI.Stack.LOG.RDK" priority="debug" appender="RI_rollingfileappender"/> -->
     	<category name="RI.Stack.LOG.RDK.TR69" priority="debug" appender="RI_TR69rollingfileappender"/>
+  
+        <category name="RI.Stack.MWO" priority="debug" appender="RI_MWOrollingfileappender"/>
+	<category name="RI.Stack.LOG.RDK.MWO" priority="debug" appender="RI_MWOrollingfileappender"/>
 	
 	<category name="RI.Stack.WEBPA" priority="debug" appender="RI_WEBPArollingfileappender"/>
 	<category name="RI.Stack.LOG.RDK.WEBPA" priority="debug" appender="RI_WEBPArollingfileappender"/>
