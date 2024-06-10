@@ -172,7 +172,7 @@
     <appender name="RI_HOTSPOTrollingfileappender" type="rollingfile" logdir="/rdklogs/logs/" prefix="Hotspotlog.txt" layout="comcast_dated" rollingpolicy="HOTSPOT_rollingpolicy"/>
     <appender name="RI_DHCPSNOOProllingfileappender" type="rollingfile" logdir="/rdklogs/logs/" prefix="Dhcpsnooplog.txt" layout="comcast_dated" rollingpolicy="DHCPSNOOP_rollingpolicy"/>
     <appender name="RI_NOTIFYrollingfileappender" type="rollingfile" logdir="/rdklogs/logs/" prefix="NOTIFYLog.txt" layout="comcast_dated" rollingpolicy="NOTIFY_rollingpolicy"/>
-    <appender name="RI_WEBCONFIGRFCrollingfileappender" type="rollingfile" logdir="/rdklogs/logs/" prefix="Webconfig_default_rfc.txt" layout="comcast_dated" rollingpolicy="WEBCONFIGRFC_rollingpolicy"/>
+    <appender name="RI_WEBCONFIGRFCrollingfileappender" type="rollingfile" logdir="/rdklogs/logs/" prefix="RFC.txt" layout="comcast_dated" rollingpolicy="WEBCONFIGRFC_rollingpolicy"/>
     <appender name="RI_WECBrollingfileappender" type="rollingfile" logdir="/rdklogs/logs/" prefix="WECBLog.txt" layout="comcast_dated" rollingpolicy="WECB_rollingpolicy"/>
     <appender name="RI_WECBMASTERrollingfileappender" type="rollingfile" logdir="/rdklogs/logs/" prefix="WECBMASTERLog.txt" layout="comcast_dated" rollingpolicy="WECBMASTER_rollingpolicy"/>
     <appender name="RI_TOUCHSTONErollingfileappender" type="rollingfile" logdir="/rdklogs/logs/" prefix="TouchstoneLog.txt" layout="comcast_dated" rollingpolicy="TOUCHSTONE_rollingpolicy"/>
