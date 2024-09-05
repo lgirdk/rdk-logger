@@ -79,6 +79,7 @@
    <rollingpolicy name="BLE_rollingpolicy" type="sizewin" maxsize="2097152" maxnum="2"/>
    <rollingpolicy name="T2_rollingpolicy" type="sizewin" maxsize="2097152" maxnum="2"/>
    <rollingpolicy name="WEBCONFIG_rollingpolicy" type="sizewin" maxsize="2097152" maxnum="2"/>
+   <rollingpolicy name="REMOTEDEBUGGER_rollingpolicy" type="sizewin" maxsize="2097152" maxnum="2"/>
  <!--   <appender name="stderr" type="stream_env" layout="dated"/>
     <appender name="syslog" type="syslog" layout="basic"/>
     <appender name="socket" type="socket_env" layout="basic"/> -->
@@ -100,6 +101,7 @@
     <appender name="RI_BLErollingfileappender" type="rollingfile" logdir="/rdklogs/logs/" prefix="Blelog.txt" layout="comcast_dated" rollingpolicy="BLE_rollingpolicy"/>
     <appender name="RI_T2rollingfileappender" type="rollingfile" logdir="/rdklogs/logs/" prefix="telemetry2_0_atom.txt" layout="comcast_dated" rollingpolicy="T2_rollingpolicy"/>
     <appender name="RI_WEBCONFIGrollingfileappender" type="rollingfile" logdir="/rdklogs/logs/" prefix="WEBCONFIGlog.txt" layout="comcast_dated" rollingpolicy="WEBCONFIG_rollingpolicy"/>
+    <appender name="RI_REMOTEDEBUGGERrollingfileappender" type="rollingfile" logdir="/rdklogs/logs/" prefix="remote-debugger.log" layout="comcast_dated" rollingpolicy="REMOTEDEBUGGER_rollingpolicy"/>	    
    <appender name="stdout" type="stream_env" layout="comcast_dated"/>
 
     <!-- 
@@ -154,6 +156,7 @@
         <category name="RI.BLE" priority="debug" appender="RI_BLErollingfileappender"/>
         <category name="RI.T2" priority="debug" appender="RI_T2rollingfileappender"/>
 	<category name="RI.WEBCONFIG" priority="debug" appender="RI_WEBCONFIGrollingfileappender"/>
+	<category name="RI.REMOTEDEBUGGER" priority="debug" appender="RI_REMOTEDEBUGGERrollingfileappender"/>
     <!--  
         Logging categories available to the Platform are listed below
         
@@ -217,4 +220,7 @@
     <category name="RI.Stack.WEBCONFIG" priority="debug" appender="RI_WEBCONFIGrollingfileappender"/>
     <category name="RI.Stack.LOG.RDK.WEBCONFIG" priority="debug" appender="RI_WEBCONFIGrollingfileappender"/>
 
+    <category name="RI.Stack.REMOTEDEBUGGER" priority="debug" appender="RI_REMOTEDEBUGGERrollingfileappender"/>
+    <category name="RI.Stack.LOG.RDK.REMOTEDEBUGGER" priority="debug" appender="RI_REMOTEDEBUGGERrollingfileappender"/>
+	    
 </log4c>
